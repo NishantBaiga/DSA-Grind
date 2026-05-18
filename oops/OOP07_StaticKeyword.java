@@ -14,6 +14,10 @@ class Student {
     void display() {
         System.out.println(name + " " + college);
     }
+
+    static void hello(){
+        System.out.println("hello from static method");
+    }
 }
 
 
@@ -36,6 +40,8 @@ public class OOP07_StaticKeyword {
 
          // No object needed
         System.out.println(MathUtil.add(10, 20));
+
+        Student.hello(); // we can also access static method like this with creatinf object.
     }
 }
 
