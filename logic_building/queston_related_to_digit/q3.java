@@ -1,5 +1,6 @@
 package logic_building.queston_related_to_digit;
 
+//  reverse a number 
 public class q3 {
     public static void main(String[] args) {
         int n = 123456;
