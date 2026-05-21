@@ -1,0 +1,5 @@
+1. in two sum there are 2 types of problem based on input 1st in which input is unsorted and 2nd in which sorted 
+2. for unsorted input we can use brute force, sorting with two pointer , hashing and sorting with binary search.
+3. for sorted we can use brute force , hashing , and two pointer is best solution where as in sorted input hashing can be best .
+
+
