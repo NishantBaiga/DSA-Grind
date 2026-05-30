@@ -1,6 +1,6 @@
 package logic_building.queston_related_to_digit;
 
-// find the sum of digit  and product of digit
+// find the sum of digit and product of digit
 public class q6 {
     public static void main(String[] args) {
         int n = 123456;

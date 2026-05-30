@@ -2,6 +2,7 @@ package logic_building.conditional_thinking;
 
 import java.util.Scanner;
 
+// take 24 hours time (0-24) and 60 minutes (0-59) and print it in 12 hours format with AM/PM
 public class Que24 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -1,9 +1,9 @@
 package arrays.array_dsa_pattern.two_pointer.twoSum.unsortedInput;
-
 import java.util.Arrays;
+import java.util.HashMap;
+
 // leetcode 2006
 // Count pairs with absolute difference equal to k
-import java.util.HashMap;
 
 // Given an array arr[] and a positive integer k, the task is to count all pairs (i, j) such that i < j and absolute value of (arr[i] - arr[j]) is equal to k. 
 

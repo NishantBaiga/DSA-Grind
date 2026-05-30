@@ -35,9 +35,6 @@ public class Arrays04_Insertion {
         */
 
 
-
-
-
         // when array is fixed and space is available
         // we can insert element at end, at start , at Specific index.
         int[] arr2 = new int[5];
