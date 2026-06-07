@@ -143,10 +143,10 @@ public class sorting {
     public static void main(String[] args) {
         int arr[] = { 64, 34, 25, 12, 22, 11, 90 }; // 7 elements , 0 to 6 index
         int n = arr.length;
-        // bubbleSort(arr, n);
-        // selectionSort(arr, n);
-        // insertionSort(arr, n);
-        // mergeSort(arr);
+        bubbleSort(arr, n);
+        selectionSort(arr, n);
+        insertionSort(arr, n);
+        mergeSort(arr);
         quickSort(arr, 0, n - 1);
 
         printArray(arr);
@@ -154,8 +154,7 @@ public class sorting {
 }
 
 // Bubble sort is a simple sorting algorithm.
-// It repeatedly compares side-by-side items and swaps them if they are in the
-// wrong order.
+// It repeatedly compares side-by-side items and swaps them if they are in the wrong order.
 // Compare the first two items.
 // Swap them if the first is larger.
 // Move to the next pair.
@@ -166,37 +165,47 @@ public class sorting {
 // Memory: O(1) (uses no extra space).
 
 // Approach:
-// Select the range of the unsorted array: Use an outer loop (i) that runs
-// backward from n-1 to 0 (where n is the size of the array). The value i = n-1
-// means the range is from 0 to n-1, i = n-2 means the range is from 0 to n-2,
-// and so on.
-// Push the maximum element to the end of the selected range: Use an inner loop
-// (j) that runs from 0 to i-1. Compare adjacent elements and swap them if
-// arr[j] > arr[j+1]. Repeating this process ensures the maximum element in the
-// current range moves to index i.
-// Progressively sort the array: After each outer loop iteration, the last part
-// of the array becomes sorted. For example:
+// Select the range of the unsorted array:
+// Use an outer loop (i) that runs backward from n-1 to 0 (where n is the size of the array). 
+// The value i = n-1 means the range is from 0 to n-1, i = n-2 means the range is from 0 to n-2, and so on.
+
+// Push the maximum element to the end of the selected range: 
+// Use an inner loop (j) that runs from 0 to i-1. 
+// Compare adjacent elements and swap them if arr[j] > arr[j+1]. 
+// Repeating this process ensures the maximum element in the current range moves to index i.
+
+// Progressively sort the array: After each outer loop iteration, the last part of the array becomes sorted. 
+// For example:
 // After the first iteration, the element at the last index is sorted.
 // After the second iteration, the last two elements are sorted.
 // This continues until the entire array is sorted.
+
 // Complete sorting: After n-1 iterations, the whole array will be sorted.
 // Note: After each iteration, the sorted portion grows from the end, so the
 // last index of the unsorted range decreases by 1 (controlled by i). The inner
 // loop (j) ensures the maximum element in the range [0…i] is placed at index i.
 
-// Selection sort is a simple, comparison-based sorting algorithm that works by
-// repeatedly finding the smallest element from an unsorted portion of a list
-// and moving it to the beginning. It is an in-place algorithm, meaning it
-// requires very little extra memory (constant \(O(1)\) space).
+
+
+
+
+
+
+// Selection sort is a simple, comparison-based sorting algorithm that works by repeatedly finding the smallest element from an unsorted portion of a list and moving it to the beginning.
+// It is an in-place algorithm, meaning it requires very little extra memory (constant \(O(1)\) space).
 
 // How Selection Sort Works
-// The algorithm conceptually divides the input list into two parts: a sorted
-// sublist (built from left to right) and an unsorted sublist.
-// Find the Minimum: Search the entire unsorted portion to find the smallest
-// value.
-// Swap: Exchange this smallest value with the element at the first position of
-// the unsorted portion.
-// Repeat: Move the boundary between the sorted and unsorted portions one step
+// The algorithm conceptually divides the input list into two parts: 
+// a sorted sublist (built from left to right) and an unsorted sublist.
+
+// Find the Minimum: 
+// Search the entire unsorted portion to find the smallest value.
+
+// Swap: 
+// Exchange this smallest value with the element at the first position of the unsorted portion.
+
+// Repeat: 
+// Move the boundary between the sorted and unsorted portions one step
 // to the right and repeat until the entire list is sorted.
 
 // Complexity Analysis
@@ -221,6 +230,16 @@ public class sorting {
 // Finally, after each iteration, we will find that the array is sorted up to
 // the first index of the range.
 
+
+
+
+
+
+
+
+
+
+
 // Insertion sort is a simple, in-place sorting algorithm that builds a sorted
 // list one item at a time.
 // It evaluates elements sequentially, shifting larger elements to the right and
@@ -239,6 +258,7 @@ public class sorting {
 // elements.
 
 // ComplexityTime Complexity:
+
 // Best Case: O(n) — Occurs when the array is already sorted.
 // Worst & Average Case: O(n^2) — Occurs when the array is in reverse order or
 // randomly ordered.

@@ -1,4 +1,4 @@
-package logic_building.queston_related_to_digit;
+package logic_building.question_related_to_digit_and_math;
 
 // find the sum of digit and product of digit
 public class q6 {

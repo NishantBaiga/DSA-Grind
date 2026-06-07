@@ -18,7 +18,7 @@ import java.util.HashSet;
 // Explanation: There is no pair with sum equals to given target.
 
 
-// same as leetcode question 1 but we have to return  index .
+// same as leetcode question 1 but we have to return index. when we have to return index we can not use sorting . and if array is not already sorted and we can not sort then we can not use two pointer , so in leetcode 2sum problem we can only use brute force and hashing
 public class q1 {
 
     static boolean bruteForce(int[] arr, int target) {

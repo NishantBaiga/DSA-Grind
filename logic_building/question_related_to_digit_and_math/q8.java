@@ -1,4 +1,4 @@
-package logic_building.queston_related_to_digit;
+package logic_building.question_related_to_digit_and_math;
 
 public class q8 {
     // take 3 digit number and check if all digits are distinct

@@ -1,69 +1,58 @@
 package arrays.array_dsa_pattern.two_pointer;
 
-import java.util.Arrays;
+//Leetcode 11. Container With Most Water (Medium)
 
-// merge two sorted array . leetcode 88
-// size of arr1 is m + n and size of arr2 is n . m is a elements in arr1 and n is element in arr2 also size of arr2.
-// without using extra space.
+// You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+// Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+// Return the maximum amount of water a container can store.
+
+// Notice that you may not slant the container.
+
+// Example 1:
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+// Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+// Example 2:
+// Input: height = [1,1]
+// Output: 1
+
+// Constraints:
+
+// n == height.length
+// 2 <= n <= 105
+// 0 <= height[i] <= 104
 public class Q7 {
-    public static void main(String[] args) {
-        // Create an instance of the Solution class
-        Solution solver = new Solution();
 
-        int[] arr1 = { 1, 2, 3, 0, 0, 0 }; // this must be M + N
-        int[] arr2 = { 2, 5, 6 };
+    static int bruteForce (int[] height){
+        int res =0;
+        
 
-        int m = 3;
-        int n = 3;
 
-        // brute force
-        solver.bruteForce(arr1, m, arr2, n);
-        // optimize
-        // solver.merge(arr1, m, arr2, n);
-
-        System.out.println(Arrays.toString(arr1));
+        return res;
     }
-}
-
-// optimize using two pointer. with time M+N and space O(1)
-class Solution {
-    // add elements of 2nd array to 1st and the sort the array.
-    public void bruteForce(int[] arr1, int m, int[] arr2, int n) {
-        for (int i = 0; i < n; i++) {
-            arr1[m + i] = arr2[i];
-        }
-
-        Arrays.sort(arr1);
-    }
-
-    // using two pointer
-    public void merge(int[] arr1, int m, int[] arr2, int n) {
-        int idx = m + n - 1;
-        int i = m - 1;
-        int j = n - 1;
-
-        while (i >= 0 && j >= 0) {
-            if (arr1[i] >= arr2[j]) {
-                arr1[idx] = arr1[i];
-                idx--;
-                i--;
-            } else {
-                arr1[idx] = arr2[j];
-                idx--;
-                j--;
+    static int two_pointer(int[] height) {
+        int res = 0;
+        int left = 0, right = height.length - 1;
+        while (left < right) {
+            int w = right - left;
+            int h = Math.min(height[left], height[right]);
+            int currentArea = w*h;
+            res = Math.max(res,currentArea);
+            if(left < right){
+                left++;
+            }else{
+                right--;
             }
         }
-        // if we have remaining element in arr2
-        while (j >= 0) {
-            arr1[idx] = arr2[j];
-            idx--;
-            j--;
-        }
-        // if we have remaining element in arr1
-        while (i >= 0) {
-            arr1[idx] = arr1[i];
-            idx--;
-            i--;
-        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[] height = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+        System.out.println(two_pointer(height));
     }
 }

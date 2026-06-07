@@ -1,4 +1,4 @@
-package arrays;
+package arrays.array_basic;
 
 public class Arrays05_Deletion {
 

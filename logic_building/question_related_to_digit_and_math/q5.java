@@ -1,4 +1,4 @@
-package logic_building.queston_related_to_digit;
+package logic_building.question_related_to_digit_and_math;
 
 // check armstrong number 371 = 3^3 + 7^3 = 1^3 = 371 , 1634 
 public class q5 {

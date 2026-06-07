@@ -7,6 +7,9 @@ import java.util.Map;
 // leetcode 167 (Two Sum II - Input Array Is Sorted)
 // Two Sum - Pair sum in sorted array
 
+// https://www.geeksforgeeks.org/dsa/pair-with-given-sum-in-sorted-array-two-sum-ii/
+// https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/
+
 // Given a 1-based indexed integer array arr[] that is sorted in non-decreasing order, along with an integer target. find two elements in the array such that their sum is equal to target. If such a pair exists, return the indices of the two elements in increasing order. If no such pair exists, return [-1, -1].
 
 // Examples:

@@ -1,63 +1,88 @@
 package arrays.array_dsa_pattern.two_pointer;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 
-// find sum equal to k when array is sorted and return value.
-// example arr={1,2,3,4,5} k=7 output= {3,4}
+// remove duplicate elements from sorted array question 26 leetcode
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+// https://neetcode.io/solutions/remove-duplicates-from-sorted-array
+// https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array
 
-// in this question we can return true if first subarray met or we can use arraylist to return all values that equal to k.
-// there are 2 type of this question 1st in which when first subarray that is equal to k return true. and 2nd type is when we have to return all the subarrays that whose sum is equal to k .
-// does pair exist return true or false . find all pair that sum is equal to k.
+// Given a sorted array arr[] of size n, the goal is to rearrange the array so that all distinct elements appear at the beginning in sorted order. Additionally, return the length of this distinct sorted subarray.
+
+// Your task is to remove duplicates from nums in-place so that each element appears only once.
+
+// Note: The elements after the distinct ones can be in any order and hold any value, as they don't affect the result.
+
+// Examples: 
+// Input: arr[] = [2, 2, 2, 2, 2]
+// Output: [2]
+// Explanation: All the elements are 2, So only keep one instance of 2.
+
+// Input: arr[] = [1, 2, 2, 3, 4, 4, 4, 5, 5]
+// Output: [1, 2, 3, 4, 5]
+
+// Input: arr[] = [1, 2, 3]
+// Output: [1, 2, 3]
+// Explanation : No change as all elements are distinct.
+
 public class Q1 {
-    public static void main(String[] args) {
-        int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
 
-        int k = 7;
-
-        // this is brute force approch with O(N*N) time complexity .
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] + arr[j] == k) {
-                    // in here we can return true if first subarray met or we can store all subarray
-                    // index or value in arrayList or in hasMap.
-                    System.err.println("the target value k : " + k + " is found at index : " + i
-                            + " and " + j);
-                }
-            }
-        }
-
-        // optimized approach with O(N) time complexity
-        // using two pointer 
-        int left = 0;
-        int right = arr.length - 1;
-        while (left < right) {
-            int sum = arr[left] + arr[right];
-            if (sum == k) {
-                // here now print all the pairs , if question ask to check pair exist or not
-                // then return true or false.
-                System.out.println("the target value k : " + k + " is found at index : " + left + " " + right);
-                left++;
-                right--;
-            } else if (sum > k) {
-                right--;
-            } else {
-                left++;
-            }
-        }
-
-        // using hasSet
+    static void bruteForce(int[] arr) {
         HashSet<Integer> set = new HashSet<>();
+        int idx = 0;
         for (int i = 0; i < arr.length; i++) {
-            int rem = k - arr[i];
-            if (set.contains(rem)) {
-                // here we are just check pair exist or not , this use in questions when ask pair exist or not. hasSet not allow duplicate
-                System.out.println("the target value k : " + k + " is found at index : " + arr[i] + " " + rem);
+            if (!set.contains(arr[i])) {
+                set.add(arr[i]);
+                arr[idx++] = arr[i];
             }
-            set.add(arr[i]);
         }
+        System.out.println( set.size());
 
+    }
 
-    
+    static void bruteForce_2(int[] nums) {
+        TreeSet<Integer> unique = new TreeSet<>();
+        for (int num : nums) {
+            unique.add(num);
+        }
+        int i = 0;
+        for (int num : unique) {
+            nums[i++] = num;
+        }
+        System.out.println(unique.size());
+    }
 
+    static void two_pointer(int[] arr) {
+        // if (arr.length == 0) return 0;
+        // this is a optimize approach with time complexity O(N)
+        int i = 0;
+        for (int j = 1; j < arr.length; j++) {
+            if (arr[j] != arr[i]) {
+                i++;
+                arr[i] = arr[j];
+            }
+        }
+        System.out.println(i+1);
+    }
+
+    static int two_pointer2(int[] nums) {
+        int n = nums.length, l = 0, r = 0;
+        while (r < n) {
+            nums[l] = nums[r];
+            while (r < n && nums[r] == nums[l]) {
+                r++;
+            }
+            l++;
+        }
+        return l;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = { 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4 ,8};
+        bruteForce(arr);
+        bruteForce_2(arr);
+        two_pointer(arr);
+        // two_pointer2(arr);
     }
 }

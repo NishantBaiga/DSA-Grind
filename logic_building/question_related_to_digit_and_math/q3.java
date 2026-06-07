@@ -1,4 +1,4 @@
-package logic_building.queston_related_to_digit;
+package logic_building.question_related_to_digit_and_math;
 
 //  reverse a number 
 public class q3 {

@@ -1,4 +1,4 @@
-package logic_building.queston_related_to_digit;
+package logic_building.question_related_to_digit_and_math;
 
 // check palindrome 121 = 121 , 1331= 1331
 public class q4 {
