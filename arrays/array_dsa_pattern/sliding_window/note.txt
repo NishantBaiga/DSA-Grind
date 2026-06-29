@@ -1,0 +1,12 @@
+
+
+
+The sliding window technique is an optimization method used for problems involving contiguous subarrays or substrings.
+
+Instead of using nested loops to calculate something for every possible subarray (which is slow),
+
+ we use a window of size k and move it step-by-step across the array, reusing past computations to make it faster.
+
+ for sliding window elements not be -ve,
+
+

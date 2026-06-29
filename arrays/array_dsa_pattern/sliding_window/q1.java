@@ -1,6 +1,7 @@
 package arrays.array_dsa_pattern.sliding_window;
 
 // Maximum sum of a subarray of size k
+// https://www.geeksforgeeks.org/dsa/find-maximum-minimum-sum-subarray-size-k/
 
 // Given an array of integers arr[] and an integer k, find the maximum possible sum among all contiguous subarrays of size exactly k.
 
@@ -28,7 +29,6 @@ public class q1 {
             for (int j = 0; j < k; j++) {
                 currSum = currSum + arr[i + j];
             }
-
             maxSum = Math.max(currSum, maxSum);
         }
         System.out.println(maxSum);

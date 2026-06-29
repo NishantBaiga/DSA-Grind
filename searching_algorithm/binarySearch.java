@@ -15,11 +15,10 @@ public class binarySearch {
             }else{
                 right = mid - 1;
             }
-
         }
-
         return -1;
     }
+
 
     static public void main(String[] args) {
         int[] arr = { 2, 4, 6, 8, 10, 12 }; // Must be sorted

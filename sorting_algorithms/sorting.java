@@ -31,8 +31,9 @@ public class sorting {
     // }
 
     static void selectionSort(int[] arr, int n) {
-        for (int i = 0; i < n - 1; i++) { // we are looping till last element-1 beacause if we have last element then it
-                                          // is sorted
+        for (int i = 0; i < n - 1; i++) {
+            // we are looping till last element-1 beacause if we have last element then it
+            // is sorted
             int minIndex = i;
             for (int j = i + 1; j < n; j++) {
                 if (arr[j] < minIndex) {
