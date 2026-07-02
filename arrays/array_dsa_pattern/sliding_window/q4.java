@@ -36,6 +36,7 @@ public class q4 {
     static int maxScore(int[] arr, int k) {
         int n = arr.length;
         int leftSum = 0, rightSum = 0, max = 0;
+        // sum of elements of first window 
         for (int i = 0; i < k; i++) {
             leftSum = leftSum + arr[i];
         }
@@ -48,7 +49,6 @@ public class q4 {
             rdx--;
             max = Math.max(leftSum + rightSum,max );
         }
-
         return max;
     }
 

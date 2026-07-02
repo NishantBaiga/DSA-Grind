@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 // 2sum (pair with given sum )
-
+// https://www.geeksforgeeks.org/dsa/check-if-pair-with-given-sum-exists-in-array/
 //Given an array arr[] of n integers and a target value, check if there exists a pair whose sum equals the target. This is a variation of the 2-Sum problem.
 
 // Examples: 

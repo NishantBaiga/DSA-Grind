@@ -24,7 +24,7 @@ public class q5 {
         for (int i = 0; i < arr1.length; i++) {
             for (int j = 0; j < arr2.length; j++) {
                 int diff = Math.abs(arr1[i] - arr2[j]);
-                if (diff < minDiff) {
+                if (diff < minDiff) {  // if current difference is less then min 
                     minDiff = diff;
                 }
             }

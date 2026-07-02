@@ -39,6 +39,7 @@ public class q4 {
 
     }
 
+    // best approach
     static int two_pointer(int[] arr) {
         Arrays.sort(arr);
 
@@ -90,4 +91,7 @@ public class q4 {
 // Update the closest sum if the current sum is closer to zero.
 // Move the left pointer right if the sum is negative; else, move the right
 // pointer left.
+
+
+// ❌ we can use hash but it it not a best approach , we use hash set if we want to excat target 
 

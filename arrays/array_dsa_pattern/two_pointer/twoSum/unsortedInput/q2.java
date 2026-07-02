@@ -54,7 +54,7 @@ public class q2 {
                 }
 
                 if (ele1 == ele2) {
-                    count  += (cnt1 * (cnt1- 1)/2);
+                    count  += (cnt1 * (cnt1- 1)/2); // here we are using simple math to ffind the count of pair 
                 }else{
                     count += cnt1 * cnt2;
                 }

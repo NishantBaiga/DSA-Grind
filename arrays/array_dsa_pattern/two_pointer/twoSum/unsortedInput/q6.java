@@ -1,4 +1,6 @@
 package arrays.array_dsa_pattern.two_pointer.twoSum.unsortedInput;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 // Find all pairs with a given sum in two unsorted arrays
@@ -24,11 +26,35 @@ public class q6 {
         }
     }
 
+    static void two_pointer(int[] A, int[] B, int m, int n, int target) {
+        Arrays.sort(A);
+        Arrays.sort(B);
+
+        int left = 0, right = B.length - 1;
+
+        while (left < A.length && right >= 0) {
+
+            int sum = A[left] + B[right];
+
+            if (sum == target) {
+                System.out.println(A[left] + "," + B[right]);
+                left++;
+                right--;
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+
+        }
+
+    }
+
     static void hashing(int[] A, int[] B, int m, int n, int target) {
 
         HashMap<Integer, Integer> set = new HashMap<>();
 
-        for (int i = 0; i < m ; i++) {
+        for (int i = 0; i < m; i++) {
             set.put(A[i], 0);
         }
 
@@ -44,7 +70,7 @@ public class q6 {
         int arr1[] = { -1, -2, 4, -6, 5, 7 }, arr2[] = { 6, 3, 4, 0 }, x = 8;
 
         bruteForce(arr1, arr2, arr1.length, arr2.length, x);
-        // two_pointer(arr1, arr2, arr1.length, arr2.length, x);
+        two_pointer(arr1, arr2, arr1.length, arr2.length, x);
         hashing(arr1, arr2, arr1.length, arr2.length, x);
     }
 }

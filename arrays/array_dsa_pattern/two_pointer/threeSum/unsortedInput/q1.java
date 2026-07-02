@@ -105,6 +105,7 @@ public class q1 {
                     res.add(Arrays.asList(arr[i], arr[left], arr[right]));
                     left++;
                     right--;
+                    // here we handlema duplicte values after we find sum == 0, 
                     while (left < right && arr[left] == arr[left - 1])
                         left++;
                     while (left < right && arr[right] == arr[right + 1])

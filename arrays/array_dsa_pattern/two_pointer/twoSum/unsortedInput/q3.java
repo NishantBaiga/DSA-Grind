@@ -1,5 +1,5 @@
 // Pair with given product (Product Pair)
-
+// https://www.geeksforgeeks.org/dsa/pair-with-given-product-set-1-find-if-any-pair-exists/
 // Given an integer array arr[] and an integer target, determine whether there exists a pair of elements in the array whose product is equal to target.
 
 // Return true if such a pair exists; otherwise, return false.
