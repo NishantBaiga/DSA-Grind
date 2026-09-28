@@ -7,3 +7,15 @@ Instead of using nested loops to calculate something for every possible subarray
  for sliding window elements not be -ve,
 
 
+
+GFG : Maximum sum of a subarray of size k ✅
+3. Longest Substring Without Repeating Characters ✅
+209. Minimum Size Subarray Sum---
+219. Contains Duplicate II
+424. Longest Repeating Character Replacement
+643. Maximum Average Subarray I
+904. Fruit Into Baskets---
+1004. Max Consecutive Ones III
+1423. Maximum Points You Can Obtain from Cards ✅
+
+

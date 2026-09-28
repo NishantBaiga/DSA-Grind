@@ -1,5 +1,3 @@
-package arrays.array_basic;
-
 import java.util.Arrays;
 
 public class Arrays01_Basics {

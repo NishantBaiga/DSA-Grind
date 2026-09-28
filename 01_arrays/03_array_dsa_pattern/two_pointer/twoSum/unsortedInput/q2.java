@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 // 2 Sum - Count pairs with given sum
-
+// https://www.geeksforgeeks.org/dsa/count-pairs-with-given-sum/
 // Given an array arr[] of n integers and a target value, find the number of pairs of integers in the array whose sum is equal to target.
 
 // Examples:  
