@@ -1,5 +1,3 @@
-package arrays.array_dsa_pattern.two_pointer;
-
 import java.util.HashSet;
 import java.util.TreeSet;
 

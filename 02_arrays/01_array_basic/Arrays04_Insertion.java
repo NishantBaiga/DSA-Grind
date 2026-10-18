@@ -1,4 +1,3 @@
-package arrays.array_basic;
 
 public class Arrays04_Insertion {
     public static void main(String[] args) {

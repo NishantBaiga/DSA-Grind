@@ -1,4 +1,4 @@
-package arrays.array_basic;
+
 import java.util.Arrays;
 public class Arrays03_Traversal {
 
