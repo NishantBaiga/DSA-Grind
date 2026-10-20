@@ -1,6 +1,7 @@
-package recursion.recursion_basic;
 
-public class q2 {
+
+// factorial 
+public class q3 {
     public static int factorial(int n) {
         if(n==0 || n==1){
             return 1;
