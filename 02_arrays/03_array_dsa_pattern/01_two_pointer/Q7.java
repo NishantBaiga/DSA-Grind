@@ -1,4 +1,3 @@
-package arrays.array_dsa_pattern.two_pointer;
 
 //Leetcode 11. Container With Most Water (Medium)
 

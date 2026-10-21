@@ -18,9 +18,6 @@
 
 ## What Is an Algorithm?
 
-An algorithm is a step-by-step procedure or set of instructions used to solve a problem or complete a task. It defines the exact sequence of operations to take input and produce the required output.
-
-Algorithms are usually:
 
 - Well-defined: each step is clear and precise.
 - Finite: they stop after a certain number of steps.
@@ -55,21 +52,11 @@ Data structures are generally classified into two main categories:
   - `int`
   - `float`
   - `char`
-  - `bool`
-
-These are used to represent single values such as numbers, characters, or true/false conditions.
-
-#### Types of Primitive Data Structures
 
 - **Integer (`int`)**: Stores whole numbers, such as `-5`, `0`, and `42`.
 - **Floating-point (`float` or `double`)**: Stores numbers with fractional parts, such as `3.14`. `double` usually offers more precision than `float`.
 - **Character (`char`)**: Stores a single character, such as `'A'` or `'7'`.
 - **Boolean (`bool`)**: Stores a truth value, usually `true` or `false`.
-
-Primitive type names and ranges vary by programming language. Each holds a simple value rather than a collection of elements.
-
-### 2. Non-Primitive Data Structures
-
 - These are more complex data structures built using primitive data types.
 - They are used to store collections of related data and represent relationships between elements.
 - Examples include:
@@ -77,9 +64,11 @@ Primitive type names and ranges vary by programming language. Each holds a simpl
   - Linked Lists
   - Stacks
   - Queues
+  - Strings
   - Trees
   - Graphs
-  - Hash Tables
+  - Hash Tables and HashMap
+  - Heap
 
 Non-primitive structures are further divided into:
 
@@ -534,7 +523,7 @@ A solution with `O(n^2)` might still be fine for small datasets, but `O(2^n)` or
 
 Understanding time complexity is essential for choosing efficient algorithms and writing scalable code.
 
-## Search Algorithms
+# Search Algorithms
 
 A **search algorithm** finds whether a target value exists in a collection and, when it does, returns its position or the matching item. The collection may be an array, string, tree, graph, or other data structure.
 
@@ -640,7 +629,7 @@ For `[1, 3, 3, 3, 5]` and target `3`, the lower bound is `1` and the upper bound
 
 
 
-## Sorting Algorithms
+# Sorting Algorithms
 
 A sorting algorithm rearranges items into a specified order, usually ascending or descending, based on a key such as a number or name. Sorting makes data easier to search, compare, and analyze.
 
@@ -659,13 +648,13 @@ A sorting algorithm rearranges items into a specified order, usually ascending o
 Comparison sorts (such as merge sort and quick sort) order items by comparing them. Non-comparison sorts (such as counting sort and radix sort) use properties of the keys. A **stable** sort preserves the relative order of equal items; an **in-place** sort uses little extra memory. Choose an algorithm based on input size, data characteristics, memory limits, and whether stability is required.
 
 
-## DSA Patterns: 25 Common Approaches
+# DSA Patterns: 25 Common Approaches
 
 DSA patterns are reusable problem-solving techniques. Recognizing a pattern helps you choose an efficient approach to a new problem.
 
 1. **Two Pointers** — Move two indices through an array or string, often from opposite ends.
-2. **Sliding Window** — Track a contiguous subarray or substring with a window that expands or contracts.  
-**Kadens's Algo**
+2. **Sliding Window** — Track a contiguous subarray or substring with a window that expands or contracts.
+3. **Kadane's Algorithm** — Find the maximum subarray sum efficiently using a running total.
 3. **Fast and Slow Pointers** — Move pointers at different speeds to detect cycles or find a midpoint.
 4. **Prefix Sum** — Precompute cumulative values to answer range-sum queries efficiently.
 5. **Difference Array** — Apply multiple range updates efficiently, then reconstruct values with a prefix sum.
@@ -690,10 +679,397 @@ DSA patterns are reusable problem-solving techniques. Recognizing a pattern help
 24. **Dynamic Programming (DP)** — Reuse results of overlapping subproblems with memoization or tabulation.
 25. **Bit Manipulation** — Use bitwise operations to represent sets or solve problems involving binary values.
 
+# Recursion
+
+**Recursion** is a way to solve a problem by having a function call itself on a smaller version of the same problem. Each call handles one part of the problem. The calls stop when they reach a simple case that can be answered directly.
+
+## The Parts of Recursion
+
+A recursive function usually has two important parts:
+
+1. **Base case:** The stopping condition. It gives an answer directly without another recursive call. Every path through the function must eventually reach a base case. Without one, the function keeps calling itself until the program runs out of stack space.
+2. **Recursive case:** The part that calls the function again with a smaller or simpler input. Each call must move closer to the base case.
+
+For example, the factorial of a non-negative number `n` is the product of the positive numbers up to `n`. We define `factorial(0) = 1`; for a number greater than zero, `factorial(n) = n * factorial(n - 1)`:
+
+```text
+factorial(n):
+        if n == 0:                 // base case
+                return 1
+        return n * factorial(n-1)  // recursive case
+```
+
+For `factorial(3)`, the calls and results are:
+
+```text
+factorial(3) = 3 * factorial(2)
+                         = 3 * 2 * factorial(1)
+                         = 3 * 2 * 1 * factorial(0)
+                         = 3 * 2 * 1 * 1
+                         = 6
+```
+
+The function first calls itself with smaller values until it reaches the base case. Then the calls return their answers one by one. This return process is often called **unwinding**.
+
+## How Recursion Works Under the Hood
+
+When a function calls itself, the computer saves the current call and starts a new one. The saved calls are kept in memory in an area called the **call stack**. Each active call has a stack frame containing information such as its input, local variables, and where to continue when the next call returns.
+
+For `factorial(3)`, the stack grows and then unwinds like this:
+
+```text
+factorial(3) waits for factorial(2)
+    factorial(2) waits for factorial(1)
+        factorial(1) waits for factorial(0)
+            factorial(0) returns 1
+        factorial(1) returns 1 * 1 = 1
+    factorial(2) returns 2 * 1 = 2
+factorial(3) returns 3 * 2 = 6
+```
+
+When a call returns, its stack frame is removed and the waiting call continues. A large number of active calls can use too much stack space and cause a **stack overflow**. Recursion therefore uses memory for its active calls, in addition to any memory used by the problem's data.
+
+## Common Uses of Recursion
+
+- **Trees:** Process a node and its smaller child trees. Preorder, inorder, and postorder tree traversals are common examples.
+- **Divide and conquer:** Split a problem into smaller problems, solve them, and combine their answers. Merge sort and quick sort use this idea.
+- **Graphs:** Explore paths or connected areas with depth-first search (DFS). A visited set is usually needed to avoid following cycles repeatedly.
+- **Backtracking:** Try a choice, continue, and undo the choice when it does not lead to a solution. This is useful for puzzles and for generating combinations.
+- **Mathematical problems:** Some definitions, such as factorial, describe an answer using a smaller input. A simple recursive Fibonacci solution repeats work, so memoization or a loop is more efficient for that problem.
+
+Recursion is useful when a problem naturally consists of smaller versions of itself. For simple repeated steps, a loop may be easier to understand and may use less stack space. When writing recursion, make sure the base case is correct and every recursive call gets closer to it.
+
+### Cons of Recursion
+
+- **Extra memory use:** Each active call needs a stack frame, so deep recursion can use substantial memory or cause a stack overflow.
+- **Function-call overhead:** Repeated calls can make recursion slower than an equivalent loop for simple tasks.
+- **Repeated work:** A recursive solution may recompute the same results, as a basic Fibonacci implementation does. Memoization can avoid this in suitable problems.
+- **Harder to trace:** Nested calls and returns can make bugs and control flow more difficult to follow.
+
+# Data Structures 
+
+
+
+## Array Data Structure
+
+An **array** is a linear data structure that stores elements in an ordered sequence. Each element is identified by an integer **index**. In a typical array, elements are stored in contiguous memory locations, allowing the computer to calculate an element's position directly from its index.
+
+With zero-based indexing, the first element is `arr[0]` and the element at index `i` is `arr[i]`. For an array of length `n`, valid indices range from `0` to `n - 1`.
+
+### Common Operations and Time Complexity
+
+| Operation | Time complexity | Explanation |
+|---|---:|---|
+| Access or update by index | `O(1)` | The position is calculated directly. |
+| Traverse all elements | `O(n)` | Each element is visited once. |
+| Search an unsorted array | `O(n)` | In the worst case, every element is checked. |
+| Search a sorted array | `O(log n)` | Binary search works because indexed access is fast. |
+| Insert or delete at the end | `O(1)` amortized for a dynamic array | Resizing may occasionally require `O(n)` time. |
+| Insert or delete at the beginning or middle | `O(n)` | Other elements usually need to shift. |
+
+### Static and Dynamic Arrays
+
+- **Static array:** Has a fixed capacity. To exceed it, a new array must be created and the elements copied.
+- **Dynamic array:** Grows its capacity when needed. Python lists, Java `ArrayList`, and C++ `vector` are examples. Appending is typically `O(1)` amortized, though an occasional resize takes `O(n)` time.
+
+### Advantages and Limitations
+
+- Provides fast indexed access and efficient traversal.
+- Contiguous storage often gives good cache locality.
+- Inserting or removing elements in the middle can be slow because elements must shift.
+- Resizing a dynamic array can require allocating new storage and copying elements.
+
+Arrays are useful when order and indexed access matter. They are also building blocks for structures such as heaps, hash tables, and matrices. A **multidimensional array** uses multiple indices, for example `matrix[row][column]` in a two-dimensional array.
+
+### Common Array Problem-Solving Patterns
+
+- **Two pointers:** Move two indices through the array, from opposite ends or at different speeds. Useful for sorted pair problems, in-place partitioning, and removing duplicates; often `O(n)` time and `O(1)` extra space.
+- **Sliding window:** Maintain a contiguous range and expand or shrink it while scanning. Useful for fixed-size windows and subarray problems with a condition that changes predictably; often `O(n)` time.
+- **Prefix sums:** Precompute cumulative totals so range sums can be answered by subtracting prefix values. Useful for repeated range queries and subarray-sum problems; takes `O(n)` preprocessing time and space.
+- **Hash map or frequency counting:** Store values, counts, or previously seen indices during a scan. Useful for complements, duplicates, and target-sum subarrays; typically `O(n)` time and `O(n)` extra space.
+- **Sort, then scan:** Sorting can expose duplicates or ordering relationships, followed by a linear scan or two pointers. Usually `O(n log n)` time; consider whether changing input order is allowed.
+- **Binary search:** Halve a sorted search range, or search a monotonic condition (“binary search on the answer”). Typically `O(log n)` checks, multiplied by the cost of each check.
+- **Kadane's algorithm:** Track the best subarray ending at each position and the best overall. Useful for maximum-sum contiguous subarrays; `O(n)` time and `O(1)` extra space.
+- **Difference array:** Record range updates at their boundaries, then use a prefix sum to apply them. Useful when many range updates are followed by a final array; typically `O(n + q)` for `q` updates.
+- **In-place cyclic placement:** Place values at indices determined by those values when the value range matches the array indices. Useful for missing- or duplicate-number problems; often `O(n)` time and `O(1)` extra space.
+
+Choose a pattern based on the clues: contiguous ranges suggest sliding windows or prefix sums, sorted data suggests two pointers or binary search, and repeated lookups suggest a hash map. Verify constraints and edge cases before applying a pattern.
+
+
+## Linked List 
 
 
 
 
+## Tree Data Structure
 
+A **tree** is a non-linear data structure that organizes data hierarchically. It consists of **nodes** connected by **edges**. Examples include folders and files on a computer, an organization chart, and the structure of an HTML document.
+
+In a rooted tree, the top node is the **root**. Each node other than the root has exactly one **parent** and may have zero or more **children**. A node with no children is a **leaf**. A **subtree** is a node together with all its descendants. The **depth** of a node is the number of edges from the root to it; the **height** of a node is the number of edges on its longest path to a leaf. The tree's height is the height of its root. Some references count nodes instead of edges when defining height, so follow the convention used in a problem.
+
+
+- **General tree:** A node can have any number of children. This is useful for representing hierarchies.
+- **Binary tree:** Each node has at most two children. Many specialized trees use this structure.
+- **Full binary tree:** Every node has either zero or two children.
+- **Complete binary tree:** Every level is full except possibly the last, which is filled from left to right. Heaps have this shape.
+- **Perfect binary tree:** Every internal node has two children, and all leaves are at the same depth.
+- **Balanced binary tree:** The height is kept approximately logarithmic in the number of nodes, helping operations remain efficient. AVL and red-black trees are examples.
+- **Binary search tree (BST):** Values in the left subtree follow the ordering rule for values smaller than the node, and values in the right subtree follow it for larger values. Search, insertion, and deletion take `O(h)`, where `h` is the height: typically `O(log n)` when balanced, but as much as `O(n)` when skewed.
+- **Heap:** A complete binary tree following a heap-order rule. In a min-heap each parent is no greater than its children; in a max-heap each parent is no less. Heaps are commonly used to implement priority queues.
+- **Trie (prefix tree):** Stores strings by sharing paths for common prefixes; useful for dictionaries and autocomplete.
+- **B-tree and B+ tree:** Balanced multiway search trees that store multiple keys per node, commonly used in databases and file systems.
+- **Segment tree and Fenwick tree:** Structures used for efficient range queries and updates on arrays. A Fenwick tree is also called a binary indexed tree.
+- **N-ary tree:** Each node has at most `N` children.
+
+### Tree Representation and Traversal
+
+- **Preorder (root, left, right):** Visit a node before its children; useful for copying or serializing a tree.
+- **Inorder (left, root, right):** In a BST, visits values in sorted order.
+- **Postorder (left, right, root):** Visit children before their parent; useful when deleting a tree or evaluating an expression tree.
+- **Level order:** Visit one level at a time using a queue; this is breadth-first search (BFS).
+
+       / \
+      2   3
+     / \ / \
+    4  5 6  7
+       / \   \
+      8  9   10
+```
+
+- Preorder: `1 2 4 5 8 9 3 6 7 10`
+- Inorder: `4 2 8 5 9 1 6 3 7 10`
+- Postorder: `4 8 9 5 2 6 10 7 3 1`
+- Level order: `1 2 3 4 5 6 7 8 9 10`
+
+**Depth-first search (DFS)** follows one branch as far as possible before backtracking. Preorder, inorder, and postorder are DFS traversal orders; DFS is typically implemented recursively or with a stack. 
+
+**Breadth-first search (BFS)** visits nodes in order of their distance from the starting node, finishing one level before moving to the next. It uses a queue and is useful for finding the shortest path in an unweighted graph.
+
+Traversing `n` nodes takes `O(n)` time. Recursive DFS uses `O(h)` call-stack space, where `h` is the tree height; BFS may use `O(n)` queue space.
+
+## Heap
+
+A **heap** is a specialized tree-based data structure that is always a **complete binary tree**. It follows a heap-order property:
+
+- In a **min-heap**, every parent is less than or equal to its children.
+- In a **max-heap**, every parent is greater than or equal to its children.
+
+This means the root always stores the smallest value in a min-heap or the largest value in a max-heap. A heap is not fully sorted; it only guarantees the ordering between each node and its children.
+
+Because the heap is complete, it can be stored very efficiently in an array:
+
+- Parent of index `i` is at `(i - 1) / 2`
+- Left child is at `2 * i + 1`
+- Right child is at `2 * i + 2`
+
+This array representation makes heap operations fast and memory-efficient.
+
+Common heap operations:
+
+- **Insert:** Add a value and restore heap order: `O(log n)`
+- **Extract min / max:** Remove the root and rebuild the heap: `O(log n)`
+- **Peek:** View the root without removing it: `O(1)`
+- **Heapify:** Convert an array into a valid heap: `O(n)`
+
+Heaps are mainly used for **priority queues**, where the highest-priority item is always at the root. They are also used in **heap sort** and in graph algorithms such as **Dijkstra's** and **Prim's**.
+
+A heap is efficient because it stays balanced as a complete tree, so its height is only `O(log n)`.
+
+## Min Heap Implementation
+
+A simple heap can be implemented using an array, where the root is always at index `0` and child-parent relationships are computed with index math.
+```java
+import java.util.Arrays;
+
+class MinHeap {
+    private int[] heap;
+    private int size;
+
+    public MinHeap() {
+        this.heap = new int[10];
+        this.size = 0;
+    }
+
+    public void insert(int value) {
+        if (size == heap.length) {
+            resize();
+        }
+
+        heap[size] = value;
+        int i = size;
+        size++;
+
+        while (i > 0) {
+            int parent = (i - 1) / 2;
+            if (heap[parent] <= heap[i]) {
+                break;
+            }
+            swap(parent, i);
+            i = parent;
+        }
+    }
+
+    public int extractMin() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty");
+        }
+
+        int min = heap[0];
+        heap[0] = heap[--size];
+        heapify(0);
+        return min;
+    }
+
+    public int peek() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty");
+        }
+        return heap[0];
+    }
+
+    public void printHeap() {
+        System.out.println(Arrays.toString(Arrays.copyOf(heap, size)));
+    }
+
+    private void heapify(int i) {
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        int smallest = i;
+
+        if (left < size && heap[left] < heap[smallest]) {
+            smallest = left;
+        }
+        if (right < size && heap[right] < heap[smallest]) {
+            smallest = right;
+        }
+
+        if (smallest == i) {
+            return;
+        }
+
+        swap(i, smallest);
+        heapify(smallest);
+    }
+
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    private void resize() {
+        int[] newHeap = new int[heap.length * 2];
+        System.arraycopy(heap, 0, newHeap, 0, heap.length);
+        heap = newHeap;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MinHeap heap = new MinHeap();
+
+        int[] values = {5, 3, 8, 1, 9, 2};
+        for (int value : values) {
+            heap.insert(value);
+        }
+
+        System.out.println(heap.peek());
+        System.out.println(heap.extractMin());
+        heap.printHeap();
+    }
+}
+```
+
+This Java implementation has the same behavior:
+
+- `insert`: `O(log n)`
+- `extractMin`: `O(log n)`
+- `peek`: `O(1)`
+- `heapify` from an array: `O(n)`
+
+## Max Heap Implementation
+
+A max heap uses the same array representation, but keeps each parent greater than or equal to its children. The root is therefore the largest value.
+
+```java
+import java.util.Arrays;
+
+class MaxHeap {
+    private int[] heap = new int[10];
+    private int size;
+
+    public void insert(int value) {
+        if (size == heap.length) {
+            heap = Arrays.copyOf(heap, heap.length * 2);
+        }
+
+        int i = size++;
+        heap[i] = value;
+        while (i > 0) {
+            int parent = (i - 1) / 2;
+            if (heap[parent] >= heap[i]) {
+                break;
+            }
+            swap(parent, i);
+            i = parent;
+        }
+    }
+
+    public int extractMax() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty");
+        }
+
+        int max = heap[0];
+        heap[0] = heap[--size];
+        if (size > 0) {
+            siftDown(0);
+        }
+        return max;
+    }
+
+    public int peek() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty");
+        }
+        return heap[0];
+    }
+
+    public void printHeap() {
+        System.out.println(Arrays.toString(Arrays.copyOf(heap, size)));
+    }
+
+    private void siftDown(int i) {
+        while (true) {
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+            int largest = i;
+
+            if (left < size && heap[left] > heap[largest]) {
+                largest = left;
+            }
+            if (right < size && heap[right] > heap[largest]) {
+                largest = right;
+            }
+            if (largest == i) {
+                return;
+            }
+
+            swap(i, largest);
+            i = largest;
+        }
+    }
+
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+}
+```
+
+- `insert`: `O(log n)`
+- `extractMax`: `O(log n)`
+- `peek`: `O(1)`
 
 
