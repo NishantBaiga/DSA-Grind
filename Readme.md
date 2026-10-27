@@ -7,7 +7,7 @@
 
 **Example:** `18, 20, 22` is data. “The average age is 20” is information derived from that data.
 
-## Structure
+## What is Structure?
 
 - **Structure** refers to the way data is organized and arranged in memory or storage so it can be processed efficiently.
 - Different structures are used for different purposes, such as storing data, retrieving it quickly, or maintaining relationships between items.
@@ -29,53 +29,35 @@
 
 **DSA** stands for **Data Structures and Algorithms**. Data structures organize and store data, while algorithms are step-by-step methods for solving problems or processing data.
 
-## Why Study DSA?
+### Why Study DSA?
 
 - To solve problems efficiently by choosing approaches that use less time and memory.
 - To understand how to store, search, and update data effectively.
 - To compare different solutions and choose the right one for a task.
 - To build a strong programming foundation; DSA concepts apply across languages and are commonly assessed in technical interviews.
 
-## Uses of DSA
+### Uses of DSA
 
-DSA is used in databases, search engines, route planning, operating systems, file systems, and applications that process large amounts of data. For example, map applications can use graph algorithms to find routes, while search engines use data structures to retrieve results quickly.
+- DSA is used in databases, search engines, route planning, operating systems, file systems, and applications that process large amounts of data. 
+- For example, map applications can use graph algorithms to find routes, while search engines use data structures to retrieve results quickly.
 
 ## DSA Classification
-
 Data structures are generally classified into two main categories:
 
 ### 1. Primitive Data Structures
+Basic, low-level data types provided directly by programming languages. They hold single values and are operated on directly by machine instructions.
 
-- These are the basic data types provided by a programming language.
-- They store simple values and are directly supported by the language.
-- Examples include:
-  - `int`
-  - `float`
-  - `char`
+- **Integer**: Whole numbers (e.g., 10, -5)
+- **Float / Double**: Numbers with decimal points (e.g., 3.14)
+- **Character**: Single letters, digits, or symbols (e.g., 'A')
+- **Boolean**: Logical values representing true or false (True, False)
+- **Pointer**: A reference or memory address pointing to another value
 
-- **Integer (`int`)**: Stores whole numbers, such as `-5`, `0`, and `42`.
-- **Floating-point (`float` or `double`)**: Stores numbers with fractional parts, such as `3.14`. `double` usually offers more precision than `float`.
-- **Character (`char`)**: Stores a single character, such as `'A'` or `'7'`.
-- **Boolean (`bool`)**: Stores a truth value, usually `true` or `false`.
-- These are more complex data structures built using primitive data types.
-- They are used to store collections of related data and represent relationships between elements.
-- Examples include:
-  - Arrays
-  - Linked Lists
-  - Stacks
-  - Queues
-  - Strings
-  - Trees
-  - Graphs
-  - Hash Tables and HashMap
-  - Heap
 
-Non-primitive structures are further divided into:
+### 2. Non-primitive structures are further divided into:
+Derived or user-defined data structures built using primitive types. They handle groups of data items and are divided into two main categories: Linear and Non-Linear.
 
-- Linear data structures: array, stack, queue, linked list
-- Non-linear data structures: tree, graph
-
-### Linear Data Structures
+#### A. Linear Data Structures
 
 Elements are arranged in a sequence, and traversal generally proceeds from one element to the next.
 
@@ -84,7 +66,7 @@ Elements are arranged in a sequence, and traversal generally proceeds from one e
 - **Stack**: Follows **last in, first out (LIFO)**. Items are added and removed at the top.
 - **Queue**: Follows **first in, first out (FIFO)**. Items are added at the back and removed from the front.
 
-### Non-Linear Data Structures
+#### B. Non-Linear Data Structures
 
 Elements are not arranged in one simple sequence. They can have relationships with multiple other elements, forming hierarchical or network-like arrangements.
 
@@ -92,541 +74,94 @@ Elements are not arranged in one simple sequence. They can have relationships wi
 - **Graph**: Consists of vertices (nodes) and edges (connections), and can represent roads or social networks.
 - **Hash table**: Stores key-value pairs and uses a hash function to help locate values. It is commonly grouped with non-linear structures, though implementations can use arrays or linked lists.
 
-Use linear structures for sequential data, trees for hierarchies, and graphs for general connections. The best choice depends on the data and the operations required.
 
 ### Why This Classification Matters
 
-Primitive data structures are used for simple single values, while non-primitive data structures are used to organize and manage large sets of data efficiently. Understanding this classification helps in choosing the right structure for a problem and improves problem-solving in DSA.
+- Primitive data structures are used for simple single values, while non-primitive data structures are used to organize and manage large sets of data efficiently. 
+- Understanding this classification helps in choosing the right structure for a problem and improves problem-solving in DSA.
+- Use linear structures for sequential data, trees for hierarchies, and graphs for general connections. 
+- The best choice depends on the data and the operations required.
 
-## Time Complexity
+# Searching Algorithms in DSA
 
-Time complexity describes how the running time of an algorithm grows as the size of the input increases. It helps us compare algorithms without depending on the speed of a specific machine.
-
-It is commonly written using Big O notation:
-
-- `O(1)` = constant time; execution time stays the same even if input size increases.
-- `O(log n)` = logarithmic time; the time grows very slowly.
-- `O(n)` = linear time; the time grows directly with input size.
-- `O(n log n)` = common in efficient sorting algorithms like merge sort.
-- `O(n^2)` = quadratic time; the time grows quickly as input size increases.
-
-### Example
-
-If an algorithm checks each item in a list once, it is `O(n)`. If it compares each item with every other item, it may become `O(n^2)`.
-
-Time complexity is important because it helps us choose efficient solutions, especially when dealing with large amounts of data.
-
-### Why Do We Use Time Complexity?
-
-- To understand how an algorithm's running time grows as the input size increases.
-- To compare algorithms without relying on a specific computer or programming language.
-- To spot approaches that may become too slow for large inputs.
-- To choose an efficient solution when multiple algorithms solve the same problem.
-
-Time complexity describes growth in the number of operations, not an exact runtime in seconds. Actual runtime also depends on factors such as hardware and implementation.
-
-
-
-
-
-## How to Find Time Complexity
-
-Use these steps to estimate an algorithm's time complexity:
-
-1. **Identify the input size.** Use `n` for one input, or use separate variables (such as `n` and `m`) for inputs of different sizes.
-2. **Count the work that grows with the input.** Focus on basic operations such as comparisons, assignments, and arithmetic. Constant-time operations do not affect the final growth rate.
-3. **Analyze loops.** A loop that runs `n` times is `O(n)`. Nested loops multiply their iteration counts, so two `n`-iteration loops nested together are `O(n^2)`. Consecutive loops add their costs.
-4. **Analyze conditionals.** For worst-case complexity, consider the more expensive branch. Add the cost of evaluating the condition if it grows with the input.
-5. **Analyze recursion.** Express the work using a recurrence and solve it. For example, `T(n) = T(n - 1) + O(1)` gives `O(n)`.
-6. **Keep the dominant term.** Drop constant factors and lower-order terms: `3n^2 + 5n + 2` simplifies to `O(n^2)`. Specify best, average, or worst case when relevant.
-
-**Example:** Two separate loops that each run `n` times take `O(n) + O(n) = O(n)`. If one loop is nested inside the other, they take `O(n * n) = O(n^2)`.
-
-## Time Complexity Cheat Sheet
-
-### 1. Big-O Notation at a Glance
-
-Big O notation tells us how the runtime of an algorithm grows as the input size increases. It focuses on the dominant growth rate and ignores constant factors.
-
-Common complexity classes:
-
-- `O(1)` — Constant time
-  - Runtime does not change with input size.
-  - Examples: array indexing, stack push/pop, hash map lookup (average case)
-
-- `O(log n)` — Logarithmic time
-  - Runtime grows very slowly.
-  - Examples: binary search, balanced tree search
-
-- `O(sqrt n)` — Square-root time
-  - Seen in some number theory and optimization problems.
-
-- `O(n)` — Linear time
-  - Runtime grows directly with input size.
-  - Examples: scanning a list, finding the maximum value
-
-- `O(n log n)` — Linearithmic time
-  - Very efficient for larger datasets.
-  - Examples: merge sort, heap sort, quicksort (average case)
-
-- `O(n^2)` — Quadratic time
-  - Runtime grows as the square of input size.
-  - Examples: nested loops, bubble sort, insertion sort, selection sort
-
-- `O(n^3)` — Cubic time
-  - Common in triple nested loops and matrix multiplication
-
-- `O(2^n)` — Exponential time
-  - Grows extremely fast.
-  - Examples: recursive Fibonacci without memoization, subset generation
-
-- `O(n!)` — Factorial time
-  - Practically impossible for large input sizes.
-  - Examples: brute-force permutation generation
-
-### 2. Quick Rules for Simplifying Complexity
-
-#### Rule 1: Ignore constants
-
-If an algorithm does 3 passes over `n` items, it is still `O(n)`, not `O(3n)`.
-
-```python
-for i in range(n):
-    print(i)
-
-for j in range(n):
-    print(j)
-```
-
-This is `O(n + n) = O(2n) = O(n)`.
-
-#### Rule 2: Ignore lower-order terms
-
-`O(n^2 + n + 10)` becomes `O(n^2)`.
-
-`O(n log n + n)` becomes `O(n log n)`.
-
-#### Rule 3: Sequential loops add
-
-If one loop takes `O(n)` and another loop takes `O(n)`, and they run one after the other, total cost is still `O(n)`.
-
-```python
-for i in range(n):
-    print(i)
-
-for j in range(n):
-    print(j)
-```
-
-Total: `O(n + n) = O(n)`
-
-#### Rule 4: Nested loops multiply
-
-A loop inside another loop multiplies the work.
-
-```python
-for i in range(n):
-    for j in range(n):
-        print(i, j)
-```
-
-This is `O(n * n) = O(n^2)`.
-
-#### Rule 5: If/else uses the worst branch
-
-```python
-if condition:
-    do_linear_work()
-else:
-    do_quadratic_work()
-```
-
-Worst-case complexity is `O(max(O(n), O(n^2))) = O(n^2)`.
-
-#### Rule 6: Recursive algorithms need recurrence analysis
-
-```python
-def countdown(n):
-    if n == 0:
-        return
-    countdown(n - 1)
-```
-
-This is `O(n)` because each recursive call reduces `n` by 1.
-
-### 3. Common Complexity Patterns
-
-#### Single loop
-
-```python
-for i in range(n):
-    print(i)
-```
-
-Time: `O(n)`
-
-#### Two loops one after another
-
-```python
-for i in range(n):
-    print(i)
-
-for j in range(n):
-    print(j)
-```
-
-Time: `O(n)`
-
-#### Nested loops
-
-```python
-for i in range(n):
-    for j in range(n):
-        print(i, j)
-```
-
-Time: `O(n^2)`
-
-#### Loop with halving each time
-
-```python
-i = n
-while i > 0:
-    i //= 2
-```
-
-This runs `log2(n)` times.
-
-Time: `O(log n)`
-
-#### Loop with doubling each time
-
-```python
-i = 1
-while i < n:
-    i *= 2
-```
-
-Also runs in `O(log n)` time.
-
-### 4. Complexity of Common Data Structures
-
-#### Array
-
-- Access by index: `O(1)`
-- Search by value: `O(n)`
-- Insert at end: `O(1)` amortized
-- Insert in middle: `O(n)`
-- Delete from middle: `O(n)`
-
-#### Linked List
-
-- Search: `O(n)`
-- Insert at head: `O(1)`
-- Insert at tail: `O(1)` if tail pointer exists
-- Delete by value: `O(n)`
-
-#### Stack
-
-- Push: `O(1)`
-- Pop: `O(1)`
-- Peek: `O(1)`
-
-#### Queue
-
-- Enqueue: `O(1)`
-- Dequeue: `O(1)`
-- Front/Rear access: `O(1)`
-
-#### Hash Table / Hash Map
-
-Average case:
-
-- Insert: `O(1)`
-- Search: `O(1)`
-- Delete: `O(1)`
-
-Worst case (due to collisions): `O(n)`
-
-#### Binary Search Tree (BST)
-
-- Search: `O(h)`
-- Insert: `O(h)`
-- Delete: `O(h)`
-
-Where `h` is the tree height.
-
-- Balanced BST: `O(log n)`
-- Unbalanced BST: `O(n)`
-
-#### Heap
-
-- Insert: `O(log n)`
-- Extract min/max: `O(log n)`
-- Peek: `O(1)`
-
-#### Graph
-
-- DFS: `O(V + E)`
-- BFS: `O(V + E)`
-- Dijkstra: `O((V + E) log V)`
-- Floyd-Warshall: `O(V^3)`
-
-Where:
-
-- `V` = number of vertices
-- `E` = number of edges
-
-### 5. Sorting Algorithm Complexity
-
-| Algorithm | Best Case | Average Case | Worst Case |
-| --- | --- | --- | --- |
-| Bubble Sort | `O(n)` | `O(n^2)` | `O(n^2)` |
-| Selection Sort | `O(n^2)` | `O(n^2)` | `O(n^2)` |
-| Insertion Sort | `O(n)` | `O(n^2)` | `O(n^2)` |
-| Merge Sort | `O(n log n)` | `O(n log n)` | `O(n log n)` |
-| Quick Sort | `O(n log n)` | `O(n log n)` | `O(n^2)` |
-| Heap Sort | `O(n log n)` | `O(n log n)` | `O(n log n)` |
-| Counting Sort | `O(n + k)` | `O(n + k)` | `O(n + k)` |
-| Radix Sort | `O(nk)` | `O(nk)` | `O(nk)` |
-
-### 6. Recursion and Complexity
-
-Recursion often creates a tree of calls. The time complexity depends on the branching factor and the depth of recursion.
-
-#### Linear recursion
-
-```python
-def countdown(n):
-    if n == 0:
-        return
-    countdown(n - 1)
-```
-
-Time: `O(n)`
-Space: `O(n)` due to recursion stack
-
-#### Binary recursion
-
-```python
-def fib(n):
-    if n <= 1:
-        return n
-    return fib(n - 1) + fib(n - 2)
-```
-
-This is exponential.
-
-Time: `O(2^n)`
-
-#### Divide and conquer recursion
-
-```python
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
-    return merge(left, right)
-```
-
-Time: `O(n log n)`
-
-### 7. Best, Average, and Worst Case
-
-An algorithm can have different complexities for different inputs.
-
-- Best case: minimum possible runtime
-- Average case: typical runtime over many inputs
-- Worst case: maximum possible runtime
-
-Example: Linear Search
-
-- Best case: `O(1)`
-- Average case: `O(n)`
-- Worst case: `O(n)`
-
-Example: Quick Sort
-
-- Best case: `O(n log n)`
-- Average case: `O(n log n)`
-- Worst case: `O(n^2)`
-
-### 8. Space Complexity
-
-Space complexity measures the extra memory needed by an algorithm.
-
-- `O(1)` — constant extra memory
-- `O(log n)` — recursion in divide-and-conquer algorithms
-- `O(n)` — storing a list, stack, or recursion stack
-- `O(n^2)` — 2D matrix or dynamic programming table
-
-Example:
-
-```python
-arr = [0] * n
-```
-
-Space: `O(n)`
-
-### 9. How to Estimate Time Complexity Quickly
-
-Use this checklist:
-
-1. Identify the input size, usually `n`
-2. Look for loops and count how many times they run
-3. Check whether loops are nested or sequential
-4. Analyze recursion and divide-and-conquer patterns
-5. Ignore constants and smaller terms
-6. Keep the dominant term
-
-Examples:
-
-- `3n + 5` → `O(n)`
-- `n^2 + 4n + 7` → `O(n^2)`
-- `5n log n + 2n` → `O(n log n)`
-- `2^n + n^10` → `O(2^n)`
-- `n + n log n + 1000` → `O(n log n)`
-
-### 10. Real-World Interpretation
-
-Time complexity helps answer:
-
-- Does this algorithm scale for large inputs?
-- Which solution is more efficient?
-- Is a brute-force approach too slow?
-- Should I use a hash map, BST, array, or graph structure?
-
-A solution with `O(n^2)` might still be fine for small datasets, but `O(2^n)` or `O(n!)` is usually not acceptable for large inputs.
-
-### 11. Very Short Cheat Sheet
-
-- Single loop: `O(n)`
-- Nested loops: `O(n^2)`
-- Binary search: `O(log n)`
-- Merge sort: `O(n log n)`
-- Bubble sort: `O(n^2)`
-- Hash map lookup: average `O(1)`
-- DFS/BFS: `O(V + E)`
-- Recursive Fibonacci: `O(2^n)`
-- Permutations: `O(n!)`
-
-### 12. Final Rule of Thumb
-
-- If you scan a list once: `O(n)`
-- If you halve or double the size repeatedly: `O(log n)`
-- If you combine two loops: usually `O(n)`
-- If you loop inside another loop: often `O(n^2)`
-- If you divide the problem into halves: usually `O(n log n)`
-- If you explore all possible combinations: likely exponential or factorial
-
-Understanding time complexity is essential for choosing efficient algorithms and writing scalable code.
-
-# Search Algorithms
-
+Searching is the process of finding a target element in a collection of data. 
 A **search algorithm** finds whether a target value exists in a collection and, when it does, returns its position or the matching item. The collection may be an array, string, tree, graph, or other data structure.
 
-### Types of Search
+## 1. Linear Search
 
-- **Linear (sequential) search** checks items one at a time. It works with unsorted data and most collection types.
-- **Binary search** repeatedly halves the search range. It requires the data to be sorted (or a search space with a monotonic condition).
-- Other approaches include **hash-based lookup** and graph/tree searches such as **DFS** and **BFS**.
+**Concept:** Checks elements one by one until the target is found or the array ends.
 
-### Linear Search
+**Example:** `[10, 20, 30, 40, 50]`, target = `30`
 
-Start at the first item and compare each item with the target until it is found or the collection ends.
+Check `10` → `20` → `30`. Target found at index `2`.
 
-```java
-public static int linearSearch(int[] items, int target) {
-    for (int i = 0; i < items.length; i++) {
-        if (items[i] == target) {
-            return i;
-        }
-    }
-    return -1;
-}
-```
+- **Requirement:** Works on sorted and unsorted arrays.
+- **Time Complexity:** Best `O(1)`, Average `O(n)`, Worst `O(n)`.
+- **Space Complexity:** `O(1)` auxiliary space.
 
-- Works on sorted or unsorted data.
-- Time: `O(n)` worst and average; `O(1)` best when the first item matches.
-- Extra space: `O(1)`.
+## 2. Binary Search
 
-### Binary Search
+**Concept:** Repeatedly divides the search range into two halves.
 
-Compare the target with the middle item of a **sorted** collection. If they differ, discard the half that cannot contain the target and repeat on the remaining half.
+**Example:** `[10, 20, 30, 40, 50, 60, 70]`, target = `60`
 
-```java
-public static int binarySearch(int[] items, int target) {
-    int left = 0;
-    int right = items.length - 1;
+Middle is `40`. Since `60 > 40`, search the right half. Find `60`.
 
-    while (left <= right) {
-        int middle = left + (right - left) / 2;
+- **Requirement:** Array must be sorted.
+- **Time Complexity:** Best `O(1)`, Average `O(log n)`, Worst `O(log n)`.
+- **Space Complexity:** Iterative `O(1)`; Recursive `O(log n)`.
 
-        if (items[middle] == target) {
-            return middle;
-        }
-        if (items[middle] < target) {
-            left = middle + 1;
-        } else {
-            right = middle - 1;
-        }
-    }
+## 3. Lower Bound
 
-    return -1;
-}
-```
+**Concept:** Finds the index of the first element **greater than or equal to (`>=`) the target** in a sorted array.
 
-- Requires sorted data and efficient access to the middle item, as in an array.
-- Time: `O(log n)`; extra space: `O(1)` for this iterative version.
-- For example, searching for `7` in `[1, 3, 5, 7, 9]` checks the middle value `5`, then searches the right half and finds `7`.
+**Example:** `[10, 20, 20, 20, 30, 40]`, target = `20`
 
-Use linear search for small or unsorted collections. Use binary search when data is sorted and you need faster repeated lookups; include the cost of sorting if the data is not already sorted.
+Result: Index `1` (first occurrence of `20`).
 
-### Lower Bound and Upper Bound
+If no element satisfies the condition, returns the array length.
 
-Lower and upper bound searches find insertion positions in sorted data, including when the target occurs more than once:
+- **Time Complexity:** `O(log n)` worst case.
+- **Space Complexity:** `O(1)` with an iterative implementation.
 
-- **Lower bound** returns the first index whose value is greater than or equal to the target.
-- **Upper bound** returns the first index whose value is strictly greater than the target.
+## 4. Upper Bound
 
-Both return `items.length` if no such index exists. The half-open search range `[left, right)` makes that end position a valid result.
+**Concept:** Finds the index of the first element **strictly greater than (`>`) the target** in a sorted array.
 
-```java
-public static int lowerBound(int[] items, int target) {
-    int left = 0;
-    int right = items.length;
+**Example:** `[10, 20, 20, 20, 30, 40]`, target = `20`
 
-    while (left < right) {
-        int middle = left + (right - left) / 2;
-        if (items[middle] < target) {
-            left = middle + 1;
-        } else {
-            right = middle;
-        }
-    }
-    return left;
-}
+Result: Index `4` (element `30`).
 
-public static int upperBound(int[] items, int target) {
-    int left = 0;
-    int right = items.length;
+If no element satisfies the condition, returns the array length.
 
-    while (left < right) {
-        int middle = left + (right - left) / 2;
-        if (items[middle] <= target) {
-            left = middle + 1;
-        } else {
-            right = middle;
-        }
-    }
-    return left;
-}
-```
+- **Time Complexity:** `O(log n)` worst case.
+- **Space Complexity:** `O(1)` with an iterative implementation.
 
-For `[1, 3, 3, 3, 5]` and target `3`, the lower bound is `1` and the upper bound is `4`. Thus, the target's matching range is `[lowerBound, upperBound)`, and its count is `upperBound - lowerBound`. Each search takes `O(log n)` time and `O(1)` extra space.
+## 5. Quick Comparison
 
+| Algorithm | Purpose | Worst-Case Time | Space |
+|---|---|---|---|
+| Linear Search | Find an element one by one | `O(n)` | `O(1)` |
+| Binary Search | Find an element by halving the range | `O(log n)` | `O(1)` iterative |
+| Lower Bound | First element `>= target` | `O(log n)` | `O(1)` |
+| Upper Bound | First element `> target` | `O(log n)` | `O(1)` |
+
+### Important Formula
+
+**Number of occurrences of a target:**
+
+`Upper Bound - Lower Bound`
+
+Example: Lower Bound = `1`, Upper Bound = `4`.
+
+Occurrences = `4 - 1 = 3`.
+
+### Key Points
+
+- Linear Search works on unsorted data.
+- Binary Search, Lower Bound, and Upper Bound require sorted data.
+- Lower Bound finds the first qualifying position.
+- Upper Bound finds the position after all occurrences of the target.
 
 
 # Sorting Algorithms
@@ -679,58 +214,61 @@ DSA patterns are reusable problem-solving techniques. Recognizing a pattern help
 24. **Dynamic Programming (DP)** — Reuse results of overlapping subproblems with memoization or tabulation.
 25. **Bit Manipulation** — Use bitwise operations to represent sets or solve problems involving binary values.
 
-# Recursion
 
-**Recursion** is a way to solve a problem by having a function call itself on a smaller version of the same problem. Each call handles one part of the problem. The calls stop when they reach a simple case that can be answered directly.
+# Recursion in DSA
 
-## The Parts of Recursion
+## 1. Quick Revision
 
-A recursive function usually has two important parts:
+**Recursion** is a programming technique in which a function calls itself to solve smaller subproblems.
+ Each call handles one part of the problem. The calls stop when they reach a simple case that can be answered directly.
 
-1. **Base case:** The stopping condition. It gives an answer directly without another recursive call. Every path through the function must eventually reach a base case. Without one, the function keeps calling itself until the program runs out of stack space.
-2. **Recursive case:** The part that calls the function again with a smaller or simpler input. Each call must move closer to the base case.
+Every recursive function needs:
+- **Base Case:** Stops recursion. It gives an answer directly without another recursive call. Every path through the function must eventually reach a base case. Without one, the function keeps calling itself until the program runs out of stack space.
+- **Recursive Case:** Calls the function with a smaller or simpler problem.  
+The part that calls the function again with a smaller or simpler input.  
+Each call must move closer to the base case
+- **Progress:** Moves toward the base case.
 
-For example, the factorial of a non-negative number `n` is the product of the positive numbers up to `n`. We define `factorial(0) = 1`; for a number greater than zero, `factorial(n) = n * factorial(n - 1)`:
+### How Recursion Works
+1. A function calls itself.
+2. Each call creates a stack frame in the **call stack**.
+3. Calls continue until the base case is reached.
+4. The function calls return in reverse order (**unwinding**).
 
-```text
-factorial(n):
-        if n == 0:                 // base case
-                return 1
-        return n * factorial(n-1)  // recursive case
-```
+The call stack follows **LIFO (Last In, First Out)**.
 
-For `factorial(3)`, the calls and results are:
+When a function calls itself, the computer saves the current call and starts a new one. 
+The saved calls are kept in memory in an area called the **call stack**. 
+Each active call has a stack frame containing information such as its input, local variables, and where to continue when the next call returns.
 
-```text
-factorial(3) = 3 * factorial(2)
-                         = 3 * 2 * factorial(1)
-                         = 3 * 2 * 1 * factorial(0)
-                         = 3 * 2 * 1 * 1
-                         = 6
-```
+When a call returns, its stack frame is removed and the waiting call continues. 
+A large number of active calls can use too much stack space and cause a **stack overflow**. 
+Recursion therefore uses memory for its active calls, in addition to any memory used by the problem's data.
 
 The function first calls itself with smaller values until it reaches the base case. Then the calls return their answers one by one. This return process is often called **unwinding**.
 
-## How Recursion Works Under the Hood
 
-When a function calls itself, the computer saves the current call and starts a new one. The saved calls are kept in memory in an area called the **call stack**. Each active call has a stack frame containing information such as its input, local variables, and where to continue when the next call returns.
+### Types of Recursion
+- **Direct Recursion:** A function calls itself directly.
+- **Indirect Recursion:** Functions call each other.
+- **Linear Recursion:** Each call makes at most one recursive call.
+- **Tree Recursion:** Each call makes multiple recursive calls.
+- **Tail Recursion:** The recursive call is the last operation.
+- **Non-tail Recursion:** Additional work remains after the recursive call returns.
+- **Nested Recursion:** A recursive call is used as an argument to another recursive call.
 
-For `factorial(3)`, the stack grows and then unwinds like this:
+### Tail vs. Non-tail Recursion
 
-```text
-factorial(3) waits for factorial(2)
-    factorial(2) waits for factorial(1)
-        factorial(1) waits for factorial(0)
-            factorial(0) returns 1
-        factorial(1) returns 1 * 1 = 1
-    factorial(2) returns 2 * 1 = 2
-factorial(3) returns 3 * 2 = 6
-```
+| Feature | Tail Recursion | Non-tail Recursion |
+|---|---|---|
+| Last operation | Recursive call | Additional work remains |
+| Stack optimization | Possible with runtime support | Generally harder |
+| Stack space | Can be O(1) if optimized | Often O(n) for linear recursion |
 
-When a call returns, its stack frame is removed and the waiting call continues. A large number of active calls can use too much stack space and cause a **stack overflow**. Recursion therefore uses memory for its active calls, in addition to any memory used by the problem's data.
+**Note:** Tail-call optimization is not guaranteed in every programming language.
 
-## Common Uses of Recursion
-
+### Common Uses of Recursion
+- **Merge sort and quick sort**
 - **Trees:** Process a node and its smaller child trees. Preorder, inorder, and postorder tree traversals are common examples.
 - **Divide and conquer:** Split a problem into smaller problems, solve them, and combine their answers. Merge sort and quick sort use this idea.
 - **Graphs:** Explore paths or connected areas with depth-first search (DFS). A visited set is usually needed to avoid following cycles repeatedly.
@@ -739,24 +277,212 @@ When a call returns, its stack frame is removed and the waiting call continues. 
 
 Recursion is useful when a problem naturally consists of smaller versions of itself. For simple repeated steps, a loop may be easier to understand and may use less stack space. When writing recursion, make sure the base case is correct and every recursive call gets closer to it.
 
-### Cons of Recursion
+### Advantages
+- Simplifies problems with recursive structures.
+- Often produces clean, readable code.
+- Useful for trees, graphs, and backtracking.
 
+### Disadvantages
+- Uses call stack memory.
+- Deep recursion can cause stack overflow.
+- Function-call overhead may reduce performance.
+- Repeated calculations can be inefficient.
 - **Extra memory use:** Each active call needs a stack frame, so deep recursion can use substantial memory or cause a stack overflow.
 - **Function-call overhead:** Repeated calls can make recursion slower than an equivalent loop for simple tasks.
 - **Repeated work:** A recursive solution may recompute the same results, as a basic Fibonacci implementation does. Memoization can avoid this in suitable problems.
 - **Harder to trace:** Nested calls and returns can make bugs and control flow more difficult to follow.
 
+### Recursion vs. Iteration
+
+| Feature | Recursion | Iteration |
+|---|---|---|
+| Mechanism | Function calls itself | Loops |
+| Stopping condition | Base case | Loop condition |
+| Memory | Usually uses call stack | Often O(1) extra space |
+| Common risk | Stack overflow | Infinite loop |
+
+---
+
+## 2. Detailed Explanation
+
+### How Recursion Works Under the Hood
+
+Every function call creates a **stack frame** containing information such as parameters, local variables, and the return location.
+
+Consider `count(3)`:
+
+```text
+count(3)
+  count(2)
+    count(1)
+      count(0) → Base case
+```
+
+When `count(0)` finishes, execution returns to `count(1)`, then `count(2)`, and finally `count(3)`.
+
+This returning process is called **stack unwinding**.
+
+### Base Case and Recursive Case
+
+- **Base case:** Defines the smallest problem that can be solved directly.
+- **Recursive case:** Reduces the original problem into a smaller problem.
+
+Every recursive function should have a reachable base case, and each recursive call should make progress toward it. Otherwise, recursion may continue until a stack overflow occurs.
+
+### Tail Recursion
+
+The recursive call is the final operation. The current function has no additional work after that call returns.
+
+Example concept:
+
+```text
+if n == 0:
+    return
+process(n)
+recurse(n - 1)
+```
+
+Here, the recursive call is the last operation.
+
+### Non-tail Recursion
+
+The function performs additional work after the recursive call returns.
+
+Example concept:
+
+```text
+if n == 0:
+    return
+recurse(n - 1)
+process(n)
+```
+
+Here, `process(n)` runs during stack unwinding.
+
+### Time and Space Complexity
+
+Complexity depends on the number of recursive calls and the work performed by each call.
+
+| Algorithm | Time | Auxiliary Stack Space |
+|---|---|---|
+| Linear recursive countdown | O(n) | O(n) |
+| Recursive factorial | O(n) | O(n) |
+| Naive recursive Fibonacci | O(2ⁿ) | O(n) |
+| Recursive binary search | O(log n) | O(log n) |
+
+These complexities assume standard implementations without tail-call optimization. Naive Fibonacci has exponential time complexity because it repeatedly calculates the same subproblems.
+
+### How to Solve Recursion Problems
+
+1. Identify the base case.
+2. Define how the problem becomes smaller.
+3. Write the recursive relationship.
+4. Determine what happens after the recursive call returns.
+5. Check termination.
+6. Calculate time and auxiliary space complexity.
+
+**Key takeaway:** Think of recursion as solving a smaller version of the same problem, stopping at the base case, and then returning through the call stack.
+
+
+# Recursion Types
+Recursion can be classified by whether a function calls itself directly or through another function, and by where or how its recursive calls occur.
+
+### Direct Recursion
+
+A function calls itself directly. Common forms include:
+
+- **Tail recursion:** The recursive call is the final operation; no work remains after it returns.
+- **Non-tail (head) recursion:** The function performs pending work, such as addition or multiplication, after the recursive call returns.
+- **Tree recursion:** The function makes multiple recursive calls, creating a branching execution tree (for example, Fibonacci or Tower of Hanoi).
+- **Nested recursion:** A recursive call is passed as an argument to another call of the same function (for example, `foo(foo(n - 1))`).
+
+### Indirect Recursion
+
+A function calls another function, which eventually calls the first function again.
+
+- **Mutual recursion:** Two or more functions call each other in a cycle. For example, `isEven(n)` calls `isOdd(n - 1)`, and `isOdd(n)` calls `isEven(n - 1)`.
+
+## Tail Recursion
+
+Tail recursion occurs when the recursive call is the final operation performed by the function. There is no remaining work after the recursive call finishes.
+
+### Tail Call Optimization (TCO)
+
+In standard recursion, every call adds a frame to the call stack, which can cause a stack overflow if the input is too large. Compilers that support Tail Call Optimization (TCO) can recognize tail-recursive functions and reuse a stack frame instead of allocating a new one. This can reduce space complexity from `O(n)` to `O(1)`.
+
+### Tail vs. Non-Tail Factorial
+
+The table below contrasts factorial implementations with and without tail-call optimization:
+
+| Attribute | Non-Tail Factorial | Tail-Recursive Factorial |
+| --- | --- | --- |
+| Code structure | `return n * fact(n - 1);` | `return fact_tail(n - 1, n * accumulator);` |
+| Pending work | Multiply by `n` after `fact(n - 1)` returns | None; the sub-call's result is the final result |
+| Stack frames | Grow linearly with `n` | Can reuse a frame when TCO is supported |
+| Space complexity | `O(n)` | `O(1)` with TCO |
+
+
+# How to Find Time and Space Complexity of recursion
+
+### Analyzing Complexity in Recursion
+
+To find the time and space complexity of a recursive function, analyze how the function branches and how deep the recursive call stack goes.
+
+### 1. Time Complexity
+
+Time complexity for recursion is determined by the total number of recursive calls and the work performed by each call, excluding its sub-calls.
+
+#### Method A: The Recursive Tree
+
+1. **Draw the tree:** Start with a node for the initial call, then draw branches for every recursive call it makes.
+2. **Find the depth (`d`):** Determine how many levels the tree goes down before hitting the base case.
+3. **Find the branching factor (`b`):** Count how many recursive calls are made inside a single function execution.
+4. **Calculate total nodes:** A tree with branching factor `b` and depth `d` has roughly `O(b^d)` nodes.
+5. **Account for internal work:** If the work done inside each function call is `O(1)`, the total time is roughly `O(b^d)`.
+
+#### Method B: Recurrence Relations
+
+1. **Write the equation:** Define a recurrence for the running time, `T(n)`.
+2. **Formulate the relation:** For example, a function that splits the input in half and does constant work can be written as:
+
+     `T(n) = T(n/2) + O(1)`
+
+3. **Solve the relation:** Use the Master Theorem or expand it with the substitution method.
+
+#### 2. Space Complexity
+
+The space complexity of a recursive function is determined by the maximum depth of the call stack. Even if a function makes many total calls, they do not all exist at the same time. The computer tracks the active calls from the root to the current leaf node.
+
+- **Identify the deepest path:** Find the maximum number of simultaneous stack frames before hitting the base case.
+- **Check memory per frame:** Analyze the local variables created inside each call.
+    - If each call uses a constant amount of memory, space is `O(max depth)`.
+    - If each call creates a copy of an array of size `n`, space is `O(n × max depth)`.
+
+### Direct Comparison: Two Classic Examples
+
+| Example algorithm | Code logic structure | Time complexity | Space complexity | Explanation |
+|---|---|---:|---:|---|
+| Linear search / countdown | `foo(n - 1)` (one call per execution) | `O(n)` | `O(n)` | There are `n` total sequential calls, and the stack grows to a depth of `n`. |
+| Naive Fibonacci | `fib(n - 1) + fib(n - 2)` (two calls per execution) | `O(2^n)` | `O(n)` | The tree branches twice at each level. The left branch's frames are cleared before the right branch runs, so the maximum stack depth is `n`. |
+
+To analyze a specific function, provide its code or describe its logic to determine its recurrence relation or draw its recursive tree.
+
+
+
 # Data Structures 
 
-
-
-## Array Data Structure
+## Arrays
 
 An **array** is a linear data structure that stores elements in an ordered sequence. Each element is identified by an integer **index**. In a typical array, elements are stored in contiguous memory locations, allowing the computer to calculate an element's position directly from its index.
 
 With zero-based indexing, the first element is `arr[0]` and the element at index `i` is `arr[i]`. For an array of length `n`, valid indices range from `0` to `n - 1`.
 
 ### Common Operations and Time Complexity
+- **Traversal** : From Start , From End
+- **Insertion** : At Start, At End , At Given Position
+- **Deletion**  : From Beginning, Given Position, First Occurrence, All occurrences and From End
+- **Searching** : Linear Search and Binary Search
+
 
 | Operation | Time complexity | Explanation |
 |---|---:|---|
@@ -769,8 +495,13 @@ With zero-based indexing, the first element is `arr[0]` and the element at index
 
 ### Static and Dynamic Arrays
 
+#### On the Basis of Size
 - **Static array:** Has a fixed capacity. To exceed it, a new array must be created and the elements copied.
 - **Dynamic array:** Grows its capacity when needed. Python lists, Java `ArrayList`, and C++ `vector` are examples. Appending is typically `O(1)` amortized, though an occasional resize takes `O(n)` time.
+
+#### On the Basis of Dimension
+- **One-dimensional array:** Stores elements in a single sequence and uses one index to access each element, for example `arr[i]`.
+- **Two-dimensional array:** Stores elements in rows and columns and uses two indices to access an element, for example `matrix[row][column]`.
 
 ### Advantages and Limitations
 
@@ -780,6 +511,58 @@ With zero-based indexing, the first element is `arr[0]` and the element at index
 - Resizing a dynamic array can require allocating new storage and copying elements.
 
 Arrays are useful when order and indexed access matter. They are also building blocks for structures such as heaps, hash tables, and matrices. A **multidimensional array** uses multiple indices, for example `matrix[row][column]` in a two-dimensional array.
+
+### Arrays in C, C++, Java, Python, and JavaScript
+
+All examples use zero-based indexing and update the element at index `1`. C and Java arrays have fixed lengths; C++ `vector`, Python lists, and JavaScript arrays can grow.
+
+#### C
+
+```c
+int numbers[] = {10, 20, 30};
+numbers[1] = 25;
+printf("%d\n", numbers[1]); // 25
+```
+
+#### C++
+
+Use `std::array` for a fixed-size array or `std::vector` for a resizable collection.
+
+```cpp
+#include <vector>
+
+std::vector<int> numbers{10, 20, 30};
+numbers[1] = 25;
+std::cout << numbers[1] << '\n'; // 25
+```
+
+#### Java
+Use `ArrayList` for Dynamic array
+```java
+int[] numbers = {10, 20, 30};
+numbers[1] = 25;
+System.out.println(numbers[1]); // 25
+```
+
+#### Python
+
+Python's built-in `list` is commonly used as a dynamic array.
+
+```python
+numbers = [10, 20, 30]
+numbers[1] = 25
+print(numbers[1])  # 25
+```
+
+#### JavaScript
+
+```javascript
+const numbers = [10, 20, 30];
+numbers[1] = 25;
+console.log(numbers[1]); // 25
+```
+
+
 
 ### Common Array Problem-Solving Patterns
 
@@ -795,10 +578,573 @@ Arrays are useful when order and indexed access matter. They are also building b
 
 Choose a pattern based on the clues: contiguous ranges suggest sliding windows or prefix sums, sorted data suggests two pointers or binary search, and repeated lookups suggest a hash map. Verify constraints and edge cases before applying a pattern.
 
+## String in DSA
 
-## Linked List 
+## 1. Quick Revision
+
+A **string** is a sequence of characters used to represent text. In DSA, strings are commonly used for character manipulation, searching, and pattern matching.
+
+Example: `"HELLO"`
+
+| Character | H | E | L | L | O |
+|---|---|---|---|---|---|
+| Index | 0 | 1 | 2 | 3 | 4 |
+
+- **Indexing:** Access a character using its index, usually starting from `0`.
+- **Traversal:** Visit each character in a string.
+- **Substring:** A continuous sequence of characters within a string.
+- **Concatenation:** Joining two strings.
+- **Palindrome:** A string that reads the same forward and backward, e.g., `"madam"`.
+- **Anagram:** Two strings containing the same characters with the same frequencies, e.g., `"listen"` and `"silent"`.
+
+## 2. Common String Operations
+
+| Operation | Time Complexity |
+|---|---|
+| Access character by index | `O(1)` |
+| Traverse string | `O(n)` |
+| Search for a character | `O(n)` |
+| Compare strings | `O(n)` worst case |
+| Reverse string | `O(n)` |
+| Concatenate strings | Typically `O(n + m)` |
+
+Here, `n` and `m` represent string lengths. Actual complexity may depend on the programming language and implementation.
+
+## 3. Mutable vs Immutable Strings
+
+- **Mutable:** The contents can be changed after creation.
+- **Immutable:** The contents cannot be changed after creation; modifications create a new string.
+
+Examples:
+- Java: `String` is immutable; `StringBuilder` is mutable.
+- C++: `std::string` is mutable.
+- In C++, string objects are mutable.
+- In C/C++, string literals (assigned to pointers) are immutable.
+- In Python, Java and JavaScript, strings are immutable.
+
+## 4. Important String Problem-Solving Patterns
+
+- **Two Pointers:** Reverse a string, check palindromes.
+- **Sliding Window:** Find the longest substring without repeating characters.
+- **Hashing / Frequency Counting:** Check anagrams, count character occurrences.
+- **Pattern Matching:** Find a pattern inside a larger string.
+- **Prefix and Suffix:** Find the longest common prefix or process string boundaries.
+
+## 5. Practice Problems
+
+### Beginner
+1. Reverse a string.
+2. Check whether a string is a palindrome.
+3. Count vowels and consonants.
+4. Count character frequencies.
+5. Check whether two strings are anagrams.
+
+### Intermediate
+1. Remove duplicate characters.
+2. Find the first non-repeating character.
+3. Find the longest common prefix.
+4. Find the longest substring without repeating characters.
+5. Group anagrams.
+
+### Advanced
+1. Longest palindromic substring.
+2. KMP string matching algorithm.
+
+## 6. Key Takeaways
+
+- String indexing usually starts from `0`.
+- Traversing a string takes `O(n)` time.
+- Understand string immutability in your programming language.
+- Learn two pointers, sliding window, and hashing for string problems.
+- Consider edge cases such as empty strings, spaces, uppercase/lowercase, and repeated characters.
+
+## Linked List
+
+## 1. Short Notes (Quick Revision)
+
+A **Linked List** is a linear data structure consisting of nodes. Each node stores data and a reference to another node. Unlike arrays, nodes do not need contiguous memory locations.
+
+### Node Structure
+- **Data:** Stores the value.
+- **Next:** Stores the reference to the next node.
+- **Head:** Points to the first node.
+- **Tail:** Refers to the last node, if maintained.
+- **NULL:** Indicates the end of a non-circular linked list.
+
+Example:
+
+`Head → 10 → 20 → 30 → NULL`
+
+### Types of Linked Lists
+1. **Singly Linked List:** Each node points to the next node.
+2. **Doubly Linked List:** Each node has `prev` and `next` references.
+3. **Circular Linked List:** The last node points back to the first node.
+4. **Circular Doubly Linked List:** Nodes connect in both directions, forming a circle.
+
+### Time Complexity
+
+| Operation | Time Complexity |
+|---|---|
+| Access by index | O(n) |
+| Search | O(n) |
+| Insert at beginning | O(1) |
+| Delete at beginning | O(1) |
+| Insert at end (without tail) | O(n) |
+| Insert after a known node | O(1) |
+| Reverse a linked list | O(n) |
+
+### Advantages
+- Dynamic size.
+- Efficient insertion and deletion at known positions.
+- Does not require contiguous memory.
+
+### Disadvantages
+- No direct indexed access.
+- Extra memory required for references.
+- Sequential traversal is required.
+- Pointer manipulation can be complex.
+
+---
+
+## 2. Detailed Notes
+
+### 2.1 How a Linked List Works
+
+A linked list stores elements in separate nodes connected through references.
+
+For example:
+
+`10 → 20 → 30 → NULL`
+
+Each node points to the next node. The head stores a reference to the first node, and traversal continues until `NULL` is reached.
+
+Unlike arrays, linked list nodes can be stored at different memory addresses.
+
+### 2.2 Node Structure
+
+A singly linked list node contains:
+
+`[ Data | Next ]`
+
+- `Data` stores the actual value.
+- `Next` stores a reference to the next node.
+
+The last node's `Next` is `NULL`.
+
+### 2.3 Types of Linked Lists
+
+**Singly Linked List**
+
+Each node points to the next node. Traversal is possible only in the forward direction.
+
+`10 → 20 → 30 → NULL`
+
+**Doubly Linked List**
+
+Each node contains references to both the previous and next nodes.
+
+`NULL ← 10 ⇄ 20 ⇄ 30 → NULL`
+
+It supports forward and backward traversal but requires extra memory.
+
+**Circular Linked List**
+
+The last node points back to the first node instead of pointing to `NULL`.
+
+`10 → 20 → 30 → 10 ...`
+
+**Circular Doubly Linked List**
+
+Each node has previous and next references, and the first and last nodes are connected in both directions.
+
+### 2.4 Array vs Linked List
+
+| Feature | Array | Linked List |
+|---|---|---|
+| Memory | Usually contiguous | Nodes can be scattered |
+| Indexed access | O(1) | O(n) |
+| Search | O(n), generally | O(n) |
+| Insert at beginning | O(n) | O(1) |
+| Memory overhead | Usually lower | Higher due to references |
+| Cache locality | Generally better | Generally worse |
+
+**Key difference:** Arrays support fast indexed access, while linked lists support efficient insertion and deletion when the relevant node references are already available.
+
+### 2.5 Basic Operations
+
+**Traversal:** Start at the head and visit nodes one by one until `NULL` is reached. Time: O(n).
+
+**Searching:** Compare each node's data with the target value. Time: O(n) in the worst case.
+
+**Insertion at Beginning:**
+1. Create a new node.
+2. Point its `next` to the current head.
+3. Update the head to the new node.
+
+Time: O(1).
+
+**Insertion at End:** Traverse to the last node and connect it to the new node. Time: O(n) without a tail reference; O(1) with a maintained tail reference.
+
+**Deletion at Beginning:** Update the head to point to the second node. Time: O(1).
+
+**Reversal:** Change the direction of each node's reference so that the last node becomes the new head. Iterative reversal takes O(n) time and O(1) auxiliary space.
+
+### 2.6 Common Interview Problems
+
+Practice these problems in order:
+
+1. Traverse and search a linked list.
+2. Insert and delete nodes.
+3. Reverse a linked list.
+4. Find the middle node using slow and fast pointers.
+5. Detect a cycle using Floyd's cycle detection algorithm.
+6. Find the k-th node from the end.
+7. Merge two sorted linked lists.
+8. Remove duplicates.
+9. Find the intersection of two linked lists.
+10. Check whether a linked list is a palindrome.
+
+### 2.7 Applications
+
+- Implementing stacks and queues.
+- Browser navigation using linked structures.
+- Music playlists.
+- LRU cache implementation with a hash map and doubly linked list.
+- Managing collections of dynamically allocated nodes.
+
+### 2.8 Important Interview Points
+
+- Understand `head`, `tail`, `next`, and `NULL`.
+- Always handle empty lists and single-node lists.
+- Update references in the correct order during insertion and deletion.
+- Be careful not to lose the remaining list while reversing pointers.
+- Know when an operation requires traversal.
+- Distinguish time complexity from auxiliary space complexity.
 
 
+## Array vs Linked List Detailed Comparsion
+
+| Feature | Array | Linked List |
+|---|---|---|
+| Definition | Collection of elements stored in indexed positions | Collection of nodes connected using references |
+| Memory Allocation | Usually contiguous | Nodes can be non-contiguous |
+| Size | Fixed in traditional arrays; dynamic arrays can resize | Dynamic |
+| Access by Index | O(1) | O(n) |
+| Searching | O(n) for unsorted arrays | O(n) |
+| Insertion at Beginning | O(n) | O(1) |
+| Insertion at End | O(1) amortized for dynamic arrays | O(n) without tail; O(1) with tail |
+| Insertion in Middle | O(n) due to shifting | O(1) after locating the node; O(n) including traversal |
+| Deletion at Beginning | O(n) due to shifting | O(1) |
+| Deletion in Middle | O(n) due to shifting | O(1) when the required node and predecessor are known; O(n) including traversal |
+| Deletion in End  | O(1) | O(1) when the tail and its predecessor are known; O(n) including traversal |
+| Memory Overhead | Low | Higher due to references |
+| Cache Performance | Generally better | Generally worse |
+| Random Access | Supported | Not supported directly |
+| Traversal | Forward; backward traversal is possible using indices | Forward in singly linked lists; both directions in doubly linked lists |
+| Implementation | Simpler | More complex due to reference management |
+| Best Use Case | Frequent indexed access | Frequent insertion/deletion at known positions |
+
+### Key Takeaway
+
+- **Array:** Best when you need fast indexed access and good cache performance.
+- **Linked List:** Useful when you need frequent insertions and deletions at known positions without shifting elements.
+
+## Stack
+
+## 1. Short Notes (Quick Revision)
+
+A **Linked List** is a linear data structure consisting of nodes. Each node stores data and a reference to another node. Unlike arrays, nodes do not need contiguous memory locations.
+
+### Node Structure
+- **Data:** Stores the value.
+- **Next:** Stores the reference to the next node.
+- **Head:** Points to the first node.
+- **Tail:** Refers to the last node, if maintained.
+- **NULL:** Indicates the end of a non-circular linked list.
+
+Example:
+
+`Head → 10 → 20 → 30 → NULL`
+
+### Types of Linked Lists
+1. **Singly Linked List:** Each node points to the next node.
+2. **Doubly Linked List:** Each node has `prev` and `next` references.
+3. **Circular Linked List:** The last node points back to the first node.
+4. **Circular Doubly Linked List:** Nodes connect in both directions, forming a circle.
+
+### Time Complexity
+
+| Operation | Time Complexity |
+|---|---|
+| Access by index | O(n) |
+| Search | O(n) |
+| Insert at beginning | O(1) |
+| Delete at beginning | O(1) |
+| Insert at end (without tail) | O(n) |
+| Insert after a known node | O(1) |
+| Reverse a linked list | O(n) |
+
+### Advantages
+- Dynamic size.
+- Efficient insertion and deletion at known positions.
+- Does not require contiguous memory.
+
+### Disadvantages
+- No direct indexed access.
+- Extra memory required for references.
+- Sequential traversal is required.
+- Pointer manipulation can be complex.
+
+---
+
+## 2. Detailed Notes
+
+### 2.1 How a Linked List Works
+
+A linked list stores elements in separate nodes connected through references.
+
+For example:
+
+`10 → 20 → 30 → NULL`
+
+Each node points to the next node. The head stores a reference to the first node, and traversal continues until `NULL` is reached.
+
+Unlike arrays, linked list nodes can be stored at different memory addresses.
+
+### 2.2 Node Structure
+
+A singly linked list node contains:
+
+`[ Data | Next ]`
+
+- `Data` stores the actual value.
+- `Next` stores a reference to the next node.
+
+The last node's `Next` is `NULL`.
+
+### 2.3 Types of Linked Lists
+
+**Singly Linked List**
+
+Each node points to the next node. Traversal is possible only in the forward direction.
+
+`10 → 20 → 30 → NULL`
+
+**Doubly Linked List**
+
+Each node contains references to both the previous and next nodes.
+
+`NULL ← 10 ⇄ 20 ⇄ 30 → NULL`
+
+It supports forward and backward traversal but requires extra memory.
+
+**Circular Linked List**
+
+The last node points back to the first node instead of pointing to `NULL`.
+
+`10 → 20 → 30 → 10 ...`
+
+**Circular Doubly Linked List**
+
+Each node has previous and next references, and the first and last nodes are connected in both directions.
+
+### 2.4 Array vs Linked List
+
+| Feature | Array | Linked List |
+|---|---|---|
+| Memory | Usually contiguous | Nodes can be scattered |
+| Indexed access | O(1) | O(n) |
+| Search | O(n), generally | O(n) |
+| Insert at beginning | O(n) | O(1) |
+| Memory overhead | Usually lower | Higher due to references |
+| Cache locality | Generally better | Generally worse |
+
+**Key difference:** Arrays support fast indexed access, while linked lists support efficient insertion and deletion when the relevant node references are already available.
+
+### 2.5 Basic Operations
+
+**Traversal:** Start at the head and visit nodes one by one until `NULL` is reached. Time: O(n).
+
+**Searching:** Compare each node's data with the target value. Time: O(n) in the worst case.
+
+**Insertion at Beginning:**
+1. Create a new node.
+2. Point its `next` to the current head.
+3. Update the head to the new node.
+
+Time: O(1).
+
+**Insertion at End:** Traverse to the last node and connect it to the new node. Time: O(n) without a tail reference; O(1) with a maintained tail reference.
+
+**Deletion at Beginning:** Update the head to point to the second node. Time: O(1).
+
+**Reversal:** Change the direction of each node's reference so that the last node becomes the new head. Iterative reversal takes O(n) time and O(1) auxiliary space.
+
+### 2.6 Common Interview Problems
+
+Practice these problems in order:
+
+1. Traverse and search a linked list.
+2. Insert and delete nodes.
+3. Reverse a linked list.
+4. Find the middle node using slow and fast pointers.
+5. Detect a cycle using Floyd's cycle detection algorithm.
+6. Find the k-th node from the end.
+7. Merge two sorted linked lists.
+8. Remove duplicates.
+9. Find the intersection of two linked lists.
+10. Check whether a linked list is a palindrome.
+
+### 2.7 Applications
+
+- Implementing stacks and queues.
+- Browser navigation using linked structures.
+- Music playlists.
+- LRU cache implementation with a hash map and doubly linked list.
+- Managing collections of dynamically allocated nodes.
+
+### 2.8 Important Interview Points
+
+- Understand `head`, `tail`, `next`, and `NULL`.
+- Always handle empty lists and single-node lists.
+- Update references in the correct order during insertion and deletion.
+- Be careful not to lose the remaining list while reversing pointers.
+- Know when an operation requires traversal.
+- Distinguish time complexity from auxiliary space complexity.
+
+
+## Queue
+
+## 1. Short Notes (Quick Revision)
+
+A **Queue** is a linear data structure that follows **FIFO (First In, First Out)**. The element inserted first is removed first.
+
+**Example:** People standing in a ticket counter line.
+
+### Basic Operations
+
+| Operation | Description | Time |
+|---|---|---|
+| Enqueue | Insert at rear | O(1) |
+| Dequeue | Remove from front | O(1) |
+| Peek / Front | View first element | O(1) |
+| isEmpty | Check if queue is empty | O(1) |
+| Search | Find an element | O(n) |
+
+### Types of Queues
+
+1. **Simple Queue:** Follows FIFO.
+2. **Circular Queue:** Reuses array space by connecting the last position logically to the first.
+3. **Priority Queue:** Processes elements according to priority.
+4. **Deque:** Allows insertion and deletion at both ends.
+
+### Implementation
+
+- **Array:** Uses an array and front/rear indices.
+- **Linked List:** Uses nodes and front/rear pointers.
+
+### Applications
+
+- BFS (Breadth-First Search)
+- CPU scheduling
+- Printer job scheduling
+- Request and message processing
+- Data buffering
+
+---
+
+## 2. Detailed Notes
+
+### What Is a Queue?
+
+A queue is a linear data structure where insertion takes place at the **rear** and deletion takes place at the **front**.
+
+Example:
+
+`Front → [10, 20, 30] ← Rear`
+
+- Enqueue 40: `[10, 20, 30, 40]`
+- Dequeue: `[20, 30, 40]`
+
+The element `10` is removed first because it was inserted first.
+
+### Queue Operations
+
+- **Enqueue(x):** Adds element `x` at the rear.
+- **Dequeue():** Removes the front element.
+- **Peek():** Returns the front element without removing it.
+- **isEmpty():** Checks whether the queue contains any elements.
+- **isFull():** Checks whether a fixed-capacity queue is full.
+
+**Underflow:** Attempting to remove an element from an empty queue.
+
+**Overflow:** Attempting to insert an element into a full, fixed-capacity queue.
+
+### Types of Queues
+
+#### 1. Simple Queue
+Follows FIFO. Elements are inserted at the rear and removed from the front.
+
+#### 2. Circular Queue
+The last array position connects logically to the first position. This allows freed positions to be reused efficiently.
+
+#### 3. Priority Queue
+Elements are removed according to their priority rather than strictly by insertion order. Equal-priority elements may follow FIFO, depending on the implementation.
+
+#### 4. Deque
+A double-ended queue that supports insertion and deletion at both the front and rear.
+
+### Queue Implementation
+
+**Array-based Queue**
+- Stores elements in contiguous array positions.
+- Uses indices to track the front and rear.
+- A simple linear implementation may waste space after deletions.
+- A circular queue helps reuse available space.
+
+**Linked-list-based Queue**
+- Each node stores data and a reference to the next node.
+- Maintains front and rear pointers.
+- Enqueue and dequeue can both take O(1) time when these pointers are maintained properly.
+
+### Time and Space Complexity
+
+| Operation | Complexity |
+|---|---|
+| Enqueue | O(1) |
+| Dequeue | O(1) |
+| Peek | O(1) |
+| isEmpty | O(1) |
+| Search | O(n) |
+| Space | O(n) |
+
+*Note: These operation complexities assume an efficient implementation. Removing the first element by shifting array elements takes O(n).*
+
+### Queue vs Stack
+
+| Feature | Queue | Stack |
+|---|---|---|
+| Principle | FIFO | LIFO |
+| Insertion | Rear | Top |
+| Deletion | Front | Top |
+| Example | People in a line | Stack of plates |
+| Application | BFS | DFS |
+
+### Important Applications
+
+1. **BFS:** Explores graph or tree nodes level by level.
+2. **Scheduling:** Manages tasks waiting for execution.
+3. **Buffering:** Temporarily stores data during transfer.
+4. **Message Queues:** Enables communication between services.
+5. **Request Handling:** Holds requests waiting to be processed.
+
+### Key Takeaways
+
+- Queue follows FIFO.
+- Enqueue inserts at the rear; dequeue removes from the front.
+- Circular queues improve space reuse in array-based implementations.
+- Priority queues process elements based on priority.
+- Queues are essential for BFS and many scheduling problems.
 
 
 ## Tree Data Structure
